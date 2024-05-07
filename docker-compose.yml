@@ -3,9 +3,7 @@ services:
     build: .
     container_name: vue
     ports:
-      - "8080:8080"
-    expose:
-      - "8080"
+      - "5173:5173"
     volumes:
       - ./app:/app
     tty: true
