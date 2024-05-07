@@ -1,0 +1,13 @@
+services:
+  client:
+    build: .
+    container_name: vue
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+    volumes:
+      - ./app:/app
+    tty: true
+    stdin_open: true
+
