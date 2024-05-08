@@ -1,4 +1,5 @@
 <script setup>
+    import { ref, onMounted, onUnmounted } from 'vue';
     import { RouterLink } from 'vue-router';
     import Title from '../components/Title.vue';
     import Header from '../components/Header.vue';
@@ -6,13 +7,34 @@
     import Paragraph from '../components/Paragraph.vue';
     import PyScript from '../components/PyScript.vue';
     import Hint from '../components/Hint.vue';
+    import ProgressFooter from '../components/ProgressFooter.vue';
 
+    const completion = ref(0);
+
+    const updateScrollCompletion = () => {
+        const currentProgress = window.scrollY;
+        const scrollHeight = document.body.scrollHeight - window.innerHeight;
+        if (scrollHeight) {
+            completion.value = Math.round((currentProgress / scrollHeight) * 100);
+            if (completion.value > 100) {
+                completion.value = 100;
+            }
+        }
+    };
+
+    onMounted(() => {
+        window.addEventListener("scroll", updateScrollCompletion);
+    });
+
+    onUnmounted(() => {
+        window.removeEventListener("scroll", updateScrollCompletion);
+    });
 </script>
 
 <template>
     <Title>第1講 Python: データ型、変数、演算子</Title>
 
-    <div class="container w-3/6 mx-auto text-start">
+    <div class="container w-3/6 mx-auto mb-10 text-start">
         <Header>1.データ型</Header>
         <Paragraph>
             Pythonに限らず、プログラミング言語が扱うデータには"型(type)"が存在する。
@@ -45,7 +67,7 @@
             <Paragraph>
                 <span class="text-yellow-400">str</span>型は文字列(string)を表す。
                 例えば、"Hello World"や"こんにちは"などである。
-                ''(single quotation)、または""(double quotation)で囲われたデータは全て文字列型となるため、"5", "10.7"といったデータも型である。
+                ''(single quotation)、または""(double quotation)で囲われたデータは全てstr型となるため、"5", "10.7"といったデータもstr型である。
                 また、str型では、"5" + "10.7" = "15.7"のように計算することはできない。
 
                 <PyScript>
@@ -215,70 +237,42 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 入力された2数の平均を求めるプログラムを書け。</SubHeader>
-            <Hint level="med">input()関数から返されるデータは、<span class="text-yellow-400">str</span>型であることに注意しよう。</Hint>
+            <Hint level="med1">input()関数から返されるデータは、<span class="text-yellow-400">str</span>型であることに注意しよう。</Hint>
 
             <PyScript>
-                name = input("What is your name? &gt; ")
+                num1 = input("First number &gt; ")
+                num2 = input("Second number &gt; ")
                 # 続きを書いてね
             </PyScript>
         </Paragraph>
 
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 次のプログラムのエラーの原因を特定し、修正せよ。</SubHeader>
+            <Hint level="med2">int型 + str型 = ?</Hint>
 
-        <h2 class="pt-5"></h2>
-        <div class="py-3">
-            <h4></h4>
-            <div class="row">
-                
-            </div>
-            <div class="container bg-dark border border-success rounded m-3 px-3 py-3">
-                <p class="h6">Python3.11</p>
-                <div class="bg-white text-black">
-                    <py-repl>
-                        
-                    </py-repl>
-                </div>
-            </div>
-        </div>
-        <div class="py-3">
-            <h4>[<span class="text-yellow-400">Medium</span>] </h4>
-            <div class="row">
-                <a class="h6 btn btn-primary hint-btn" role="button" target="#hint-med">ヒントを見る</a>
-                <div id="hint-med" class="hint">
-                    <p>Hint: <span class="text-yellow-400">int()</span>関数を使うと、小数部は切り捨てられる。</p>
-                </div>
-            </div>
-            <div class="container bg-dark border border-success rounded m-3 px-3 py-3">
-                <p class="h6">Python3.11</p>
-                <div class="bg-white text-black">
-                    <py-repl>
-                        num1 = input("First number &gt; ")
-                        num2 = input("Second number &gt; ")
-                        # 続きを書いてね
-                    </py-repl>
-                </div>
-            </div>
-        </div>
-        <div class="py-3">
-            <h4>[<span class="text-danger">Hard</span>] 1番目に入力された整数から2番目に入力された整数を引き、その差を1/2倍した数を出力するプログラムを書け。ただし、算術演算子のうち使えるのは + のみとし、出力は小数点以下を切り捨てても良いものとする。</h4>
-            <div class="row">
-                <a class="h6 btn btn-primary hint-btn" role="button" target="#hint-hard">ヒントを見る</a>
-                <div id="hint-hard" class="hint">
-                    <p>Hint: <span class="text-yellow-400">ビット演算子</span>について調べてみよう。</p>
-                </div>
-            </div>
-            <div class="container bg-dark border border-success rounded m-3 px-3 py-3">
-                <p class="h6">Python3.11</p>
-                <div class="bg-white text-black">
-                    <py-repl>
-                        num1 = input("First number &gt; ")
-                        num2 = input("Second number &gt; ")
-                        # 続きを書いてね
-                    </py-repl>
-                </div>
-            </div>
+            <PyScript>
+                a = 10              # aに10を代入
+                b = "5.5"           # bに"5.5"を代入
+                print(float(a + b)) # str型をfloat型にキャストして足す  
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 1番目に入力された整数から2番目に入力された整数を引いた結果を出力するプログラムを書け。ただし、算術演算子のうち使えるのは + のみとする。</SubHeader>
+            <Hint level="hard"><span class="text-yellow-400">ビット演算</span>について調べてみよう。</Hint>
+
+            <PyScript>
+                num1 = input("First number &gt; ")
+                num2 = input("Second number &gt; ")
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+        <ProgressFooter :progress="completion" class="mt-16" />
+        <div class="text-center my-5">
+            <a href="#" class="p-2 rounded-md bg-green-700 hover:bg-green-600">ページ上部へ!</a>
         </div>
     </div>
-    <a href="#" class="p-2 rounded-md bg-green-700 hover:bg-green-600">ページ上部へ!</a>
 </template>
 
 <style scoped>
