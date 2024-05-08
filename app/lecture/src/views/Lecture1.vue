@@ -5,6 +5,7 @@
     import SubHeader from '../components/SubHeader.vue';
     import Paragraph from '../components/Paragraph.vue';
     import PyScript from '../components/PyScript.vue';
+    import Hint from '../components/Hint.vue';
 
 </script>
 
@@ -129,7 +130,6 @@
         <Paragraph>
             Pythonの演算子には、その機能に応じて、算術演算子、代入演算子、比較演算子などがある。
             ここでは、この3種類の演算子を見ていこう。
-        </Paragraph>
 
             <SubHeader>算術演算子</SubHeader>
             <Paragraph>
@@ -164,114 +164,83 @@
                 </PyScript>
             </Paragraph>
 
-        <Paragraph>
-            次の例を見て、さらに理解を深めよう。
-        </Paragraph>
-        <PyScript>
-            a = 1       # 変数"a"に整数1を代入
-            b = 2       # 変数"b"に整数2を代入
-            a = a + b   # 変数"a"に a + b の結果を代入
-            print(a)    # 変数"a"の値を出力
-        </PyScript>
-        <Paragraph>
-            ここで、3行目の"a = a + b"という表現に違和感を覚える方がいるかもしれない。
-            これは、プログラミングにおける"="という記号が、
-            等しいという意味ではなく、代入する(assign)という操作を意味するからである。
-            したがって、"a = a + b"は、"aの値をa + bの値に書き換えなさい"という命令に他ならない。
-        </Paragraph>
+            <SubHeader>比較演算子</SubHeader>
+            <Paragraph>
+                比較演算子は、表現を評価(evaluate)して真偽値を得るための演算子である。
+                例えば、<span class="text-yellow-400">==</span>や<span class="text-yellow-400">&lt;</span>, <span class="text-yellow-400">&gt;</span>、あるいは<span class="text-yellow-400">&lt;=</span>, <span class="text-yellow-400">&gt;=</span>が頻繁に使われる。
 
-
-        <h2 class="pt-5">3.演算子</h2>
-        <p class="h5 pt-3">
-            
-        </p>
-        <p class="h5 pt-3">
-            
-        </p>
-        <div class="container bg-dark border border-success rounded m-3 px-3 py-3">
-            <p class="h6">Python3.11</p>
-            <div class="bg-white text-black">
-                <py-repl></py-repl>
-                <py-repl>print(10 % 3)</py-repl>
-                <py-repl>print(10 // 3)</py-repl>
-            </div>
-        </div>
-        <p class="h5 pt-3">
-            
-        </p>
-        <div class="container bg-dark border border-success rounded m-3 px-3 py-3">
-            <p class="h6">Python3.11</p>
-            <div class="bg-white text-black">
-                <py-repl>
-                    print(a)
-                </py-repl>
-                <py-repl>
-                    a = 3
-                    a += 1
-                    print(a)
-                </py-repl>
-            </div>
-        </div>
-        <p class="h5 pt-3">
-            比較演算子は、表現を評価(evaluate)して真偽値を得るための演算子である。
-            例えば、<span class="text-yellow-400">==</span>や<span class="text-yellow-400">&lt;</span>、あるいは<span class="text-yellow-400">&gt;=</span>が頻繁に使われる。
-        </p>
-        <div class="container bg-dark border border-success rounded m-3 px-3 py-3">
-            <p class="h6">Python3.11</p>
-            <div class="bg-white text-black">
-                <py-repl>
+                <Paragraph>
+                    次のプログラムの変数の値を書き換えて、出力をTrueにしてみよう。
+                </Paragraph>
+                <PyScript>
                     a = 3
                     b = 4
                     print(a == b)
-                </py-repl>
-                <py-repl>
+                </PyScript>
+                <PyScript>
                     a = 3
                     b = 4
                     print(a &gt; b)
-                </py-repl>
-                <py-repl>
+                </PyScript>
+                <PyScript>
                     a = 3
                     b = 4
-                    print(a &gt;= b)
-                </py-repl>
-            </div>
-        </div>
-        <p class="h5 pt-3">
-            おまけ: 文字列演算子(<span class="text-yellow-400">+</span>)というものもある。
-            これはstr型のデータを連結するときに用いられ、使い方は算術演算子の+と変わらない。
-        </p>
-        <div class="container bg-dark border border-success rounded m-3 px-3 py-3">
-            <p class="h6">Python3.11</p>
-            <div class="bg-white text-black">
-                <py-repl>
+                    print(a &lt;= b)
+                </PyScript>
+            </Paragraph>
+
+            <Paragraph class="mt-5">
+                おまけ: 文字列演算子(<span class="text-yellow-400">+</span>)というものもある。
+                これはstr型のデータを連結するときに用いられ、使い方は算術演算子の+と変わらない。
+
+                <PyScript>
                     a = "Hello "
                     b = "World!"
                     print(a + b)
-                </py-repl>
-            </div>
-        </div>
+                </PyScript>
+            </Paragraph>
+        </Paragraph>
 
-        <h2 class="pt-5">4.練習問題</h2>
+
+        <Header>4.練習問題</header>
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 名前を尋ね、それを出力するプログラムを書け。</SubHeader>
+            <Hint level="easy"><span class="text-yellow-400">input()</span>関数を使うと、入力された文字列を取得できる。</Hint>
+
+            <PyScript>
+                name = input("What is your name? &gt; ")
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 入力された2数の平均を求めるプログラムを書け。</SubHeader>
+            <Hint level="med">input()関数から返されるデータは、<span class="text-yellow-400">str</span>型であることに注意しよう。</Hint>
+
+            <PyScript>
+                name = input("What is your name? &gt; ")
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+
+        <h2 class="pt-5"></h2>
         <div class="py-3">
-            <h4>[<span class="text-success">Easy</span>] 名前を尋ね、それを出力するプログラムを書け。</h4>
+            <h4></h4>
             <div class="row">
-                <a class="h6 btn btn-primary hint-btn" role="button" target="#hint-easy">ヒントを見る</a>
-                <div id="hint-easy" class="hint">
-                    <p>Hint: <span class="text-yellow-400">input()</span>関数を使うと、入力された文字列を取得できる。</p>
-                </div>
+                
             </div>
             <div class="container bg-dark border border-success rounded m-3 px-3 py-3">
                 <p class="h6">Python3.11</p>
                 <div class="bg-white text-black">
                     <py-repl>
-                        name = input("What is your name? &gt; ")
-                        # 続きを書いてね
+                        
                     </py-repl>
                 </div>
             </div>
         </div>
         <div class="py-3">
-            <h4>[<span class="text-yellow-400">Medium</span>] 入力された2数の平均を求めるプログラムを書け。ただし、出力は小数部を切り捨てた整数であること。</h4>
+            <h4>[<span class="text-yellow-400">Medium</span>] </h4>
             <div class="row">
                 <a class="h6 btn btn-primary hint-btn" role="button" target="#hint-med">ヒントを見る</a>
                 <div id="hint-med" class="hint">
