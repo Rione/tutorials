@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import TopScreen from './components/TopScreen.vue'
-import LectureTemplate from './components/LectureTemplate.vue'
+import TopScreen from './views/TopScreen.vue'
+import LectureTemplate from './views/LectureTemplate.vue'
 
 const routes = [
     {
