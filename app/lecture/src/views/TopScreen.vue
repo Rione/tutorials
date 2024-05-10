@@ -1,5 +1,5 @@
 <script setup>
-    import { ref } from 'vue';
+    import { ref, onMounted, onUnmounted } from 'vue';
     import { useRouter } from 'vue-router';
 
     const router = useRouter()
@@ -12,6 +12,7 @@
         {"title": "Git: 環境構築、Gitコマンド"},
     ])
 
+    const output = ref('');
     const oneOriented = (num) => Number(num) + 1;
     const navigate = (index) => {
         router.push({
@@ -22,41 +23,47 @@
         })
     }
 
+    onMounted(() => {
+        $(document).ready(() => {
+            const html_text = "Ri-oneの<span id='target'>新入生歓迎講座</span>へようこそ。"
+            const conv_text = "Ri-oneの新入生歓迎講座へようこそ。";
+            const orig_text = "Ri-oneのしんにゅうせいかんげいこうざへようこそ。";
+            const speed     = 130; // Typing speed in milliseconds
+            var index       = 0;
 
-    $(document).ready(function() {
-        const html_text = "Ri-oneの<span id='target'>新入生歓迎講座</span>へようこそ。"
-        const conv_text = "Ri-oneの新入生歓迎講座へようこそ。";
-        const orig_text = "Ri-oneのしんにゅうせいかんげいこうざへようこそ。";
-        const speed     = 130; // Typing speed in milliseconds
-        var index       = 0;
+            function typeNextCharacter() {
+                output.value += (orig_text[index]);
+                index++;
+                if (index < orig_text.length) {
+                    if (index == 14){
+                        output.value = (conv_text.slice(0, 11));
+                    } else if (index == 18){
+                        output.value = (conv_text.slice(0, 13));
+                    } else if (index == 22){
+                        output.value = (conv_text.slice(0, 15));
+                    }
+                    setTimeout(typeNextCharacter, speed);
+                } else if (index == orig_text.length) {
+                    output.value = html_text;
+                    $('#target').css('animation', 'changeColor forwards 3s 1');
+                    console.log($('#target').text());
+                    console.log($('#abcd').text());
+                } 
+            };
 
-        function typeNextCharacter() {
-            $('#output').append(orig_text[index]);
-            index++;
-            if (index < orig_text.length) {
-                if (index == 14){
-                    $('#output').text(conv_text.slice(0, 11));
-                } else if (index == 18){
-                    $('#output').text(conv_text.slice(0, 13));
-                } else if (index == 22){
-                    $('#output').text(conv_text.slice(0, 15));
-                }
-                setTimeout(typeNextCharacter, speed);
-            } else if (index == orig_text.length) {
-                $('#output').html(html_text);
-                $('#target').css('animation', 'changeColor forwards 3s 1');
-            } 
-        };
+            typeNextCharacter();
+        });
+    });
 
-        // Start typing animation
-        typeNextCharacter();
+    onUnmounted(() => {
+        output.value = "";
     });
 </script>
 
 <template>
     <div class="container mx-auto my-16">
-        <h1 id="output" class="text-5xl"></h1><span class="typing-cursor"></span>
-        <div class="mt-2">※レスポンシブ非対応なのは内緒です。だって面倒くさ(ry</div>
+        <h1 v-html="output" class="text-5xl"></h1><span class="typing-cursor"></span>
+        <div id="abcd" class="mt-2">※レスポンシブ非対応なのは内緒です。だって面倒くさ(ry</div>
     </div>
 
     <table class="mx-auto mt-20 sm:w-5/6 md:w-3/6 bg-neutral-900 rounded-lg border-2 border-solid border-green-700">
