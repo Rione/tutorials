@@ -2,6 +2,7 @@
     import Lecture1 from './Lecture1.vue';
     // import Lecture2 from './Lecture2.vue';
     import WorkInProgress from './WorkInProgress.vue'
+    import NotExisting from './NotExisting.vue';
 </script>
 
 <template>
@@ -12,5 +13,5 @@
     <WorkInProgress v-else-if="$route.params.number === '4'" />
     <WorkInProgress v-else-if="$route.params.number === '5'" />
     <WorkInProgress v-else-if="$route.params.number === '6'" />
-    <WorkInProgress v-else />
+    <NotExisting v-else />
 </template>
