@@ -24,7 +24,6 @@
     }
 
     onMounted(() => {
-        $(document).ready(() => {
             const html_text = "Ri-oneの<span id='target'>新入生歓迎講座</span>へようこそ。"
             const conv_text = "Ri-oneの新入生歓迎講座へようこそ。";
             const orig_text = "Ri-oneのしんにゅうせいかんげいこうざへようこそ。";
@@ -45,14 +44,10 @@
                     setTimeout(typeNextCharacter, speed);
                 } else if (index == orig_text.length) {
                     output.value = html_text;
-                    $('#target').css('animation', 'changeColor forwards 3s 1');
-                    console.log($('#target').text());
-                    console.log($('#abcd').text());
-                } 
+                }
             };
 
             typeNextCharacter();
-        });
     });
 
     onUnmounted(() => {
@@ -62,8 +57,8 @@
 
 <template>
     <div class="container mx-auto my-16">
-        <h1 v-html="output" class="text-5xl"></h1><span class="typing-cursor"></span>
-        <div id="abcd" class="mt-2">※レスポンシブ非対応なのは内緒です。だって面倒くさ(ry</div>
+        <h1 v-html="output" id="output" class="text-5xl"></h1><span class="typing-cursor"></span>
+        <div class="mt-2">※レスポンシブ非対応なのは内緒です。だって面倒くさ(ry</div>
     </div>
 
     <table class="mx-auto mt-20 sm:w-5/6 md:w-3/6 bg-neutral-900 rounded-lg border-2 border-solid border-green-700">
@@ -76,6 +71,10 @@
 </template>
 
 <style>
+    #target {
+        animation: changeColor forwards 3s 1;
+    }
+
     #output {
         display: inline-block;
     }
