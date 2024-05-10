@@ -1,8 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import TopScreen from './views/TopScreen.vue'
 import LectureTemplate from './views/LectureTemplate.vue'
+import NotExisting from './views/NotExisting.vue'
 
 const routes = [
+    {
+        path: '/',
+        redirect: {
+            name: 'top'
+        }
+    },
     {
         path: '/lecture/top',
         name: 'top',
@@ -13,6 +20,11 @@ const routes = [
         name: 'lecture',
         component: LectureTemplate,
         props: true
+    },
+    {
+        path:'/:catchAll(.*)',
+        name: 'not-found',
+        component: NotExisting,
     }
 ]
 
