@@ -1,6 +1,5 @@
 <script setup>
     import { ref, onMounted, onUnmounted } from 'vue';
-    import { RouterLink } from 'vue-router';
     import Title from '../components/Title.vue';
     import Header from '../components/Header.vue';
     import SubHeader from '../components/SubHeader.vue';
