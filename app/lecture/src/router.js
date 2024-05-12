@@ -11,12 +11,12 @@ const routes = [
         }
     },
     {
-        path: '/lecture/top',
+        path: '/top',
         name: 'top',
         component: TopScreen,
     },
     {
-        path: '/lecture/:number',
+        path: '/:number',
         name: 'lecture',
         component: LectureTemplate,
         props: true
@@ -29,7 +29,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHistory('/dist/'),
+    history: createWebHistory('/lecture/'),
     routes
 })
 
