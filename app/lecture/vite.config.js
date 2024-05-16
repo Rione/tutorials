@@ -3,9 +3,9 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
     base: "./",
-    build: {
-        outDir: 'lecture'
-    },
+    // build: {
+    //     outDir: 'lecture'
+    // },
     plugins: [
         vue({
             template: {
