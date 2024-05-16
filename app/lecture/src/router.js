@@ -11,6 +11,12 @@ const routes = [
         }
     },
     {
+        path: '/lecture',
+        redirect: {
+            name: 'top'
+        }
+    },
+    {
         path: '/lecture/top',
         name: 'top',
         component: TopScreen,
@@ -29,7 +35,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory('/'),
     routes
 })
 
