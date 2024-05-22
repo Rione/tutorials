@@ -47,7 +47,7 @@
                     a = 2       # aに整数を代入
                     b = 2       # bに整数を代入
                     if (a == b):                    # 条件式の後ろの:(コロン)を忘れないように
-                        print("a is equal to b")    # 分岐処理はインデント(Tabキー押下)すること
+                        print("a is equal to b")    # 分岐処理はインデント(Tab or スペース)すること
                     print("finish")
                 </PyScript>
 
@@ -125,7 +125,7 @@
                 コロンやインデントなど、その記法はif文に見られるものと同様である。
                 また、for文は原則として反復する対象となるイテラブル(<span class="text-yellow-400">iterable</span>)が必要であるため、ここでは、複数の文字列を含むlist型の変数fruitsを定義して渡している。
                 イテラブルの各要素は、インデックス(<span class="text-yellow-400">index</span>)のfruitに順に代入されていく。
-                配列(list)については次項で詳説するので、今は、"複数のデータが入った入れ物"という認識で構わない。
+                配列(list)については次回に詳説するので、今は、"複数のデータが入った入れ物"という認識で構わない。
             </Paragraph>
 
             <SubHeader>指定回数だけ反復させる</SubHeader>
@@ -230,50 +230,51 @@
 
         <Header>4.練習問題</header>
         <Paragraph>
-            鋭意、制作中です! しばしお待ちを。
-        </Paragraph>
-        <!-- <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 名前を尋ね、それを出力するプログラムを書け。</SubHeader>
-            <Hint level="easy"><span class="text-yellow-400">input()</span>関数を使うと、入力された文字列を取得できる。</Hint>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 1以上x未満の範囲に含まれる奇数の総和を求めるプログラムを書け。</SubHeader>
+            <Hint level="easy1"><span class="text-yellow-400">range()</span>関数を使うと、list型(厳密にはrange型)の数列を取得できる。</Hint>
 
             <PyScript>
-                name = input("What is your name? &gt; ")
+                x: int = 100
                 # 続きを書いてね
             </PyScript>
         </Paragraph>
 
         <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 入力された2数の平均を求めるプログラムを書け。</SubHeader>
-            <Hint level="med1">input()関数から返されるデータは、<span class="text-yellow-400">str</span>型であることに注意しよう。</Hint>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 次のプログラムのエラーの原因を特定し、修正せよ。</SubHeader>
+            <Hint level="easy2">宣言されていない変数は呼び出せない。</Hint>
 
             <PyScript>
-                num1 = input("First number &gt; ")
-                num2 = input("Second number &gt; ")
+                sum = 0
+                while (flag):
+                    sum += 1
+                    if (sum > 5):
+                        flag = False
+                print('finish!')
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 入力された自然数に対して、適切な序数を出力するプログラムを書け。例えば、1が入力された時に"1st"を返すこと。</SubHeader>
+            <Hint level="med">1の位の数に応じて条件分岐させること。ただし、例外がいくつか存在するので注意せよ。</Hint>
+
+            <PyScript>
+                num = input()
                 # 続きを書いてね
             </PyScript>
         </Paragraph>
 
         <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 次のプログラムのエラーの原因を特定し、修正せよ。</SubHeader>
-            <Hint level="med2">int型 + str型 = ?</Hint>
+            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 任意の実数x(rad)に対して、sin(x)の値を求めるプログラムを書け。ただし、必要な計算精度は7桁程度とし、以下のpiの値を利用しても良いものとする。</SubHeader>
+            <Hint level="hard">愚直にテイラー展開しても良いが、周期性を利用することで効率的なコードが書ける。(練習のため、numpyの組み込み関数に頼らず自作してみよう。)</Hint>
 
             <PyScript>
-                a = 10              # aに10を代入
-                b = "5.5"           # bに"5.5"を代入
-                print(float(a + b)) # str型をfloat型にキャストして足す  
-            </PyScript>
-        </Paragraph>
+                import numpy
 
-        <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 1番目に入力された整数から2番目に入力された整数を引いた結果を出力するプログラムを書け。ただし、算術演算子のうち使えるのは + のみとする。</SubHeader>
-            <Hint level="hard"><span class="text-yellow-400">ビット演算</span>について調べてみよう。</Hint>
-
-            <PyScript>
-                num1 = input("First number &gt; ")
-                num2 = input("Second number &gt; ")
+                pi: float = numpy.pi
+                x = pi / 2 
                 # 続きを書いてね
             </PyScript>
-        </Paragraph> -->
+        </Paragraph>
 
         <ProgressFooter :progress="completion" class="mt-16" />
         <div class="text-center my-5">
