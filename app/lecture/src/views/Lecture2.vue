@@ -89,7 +89,7 @@
                 </PyScript>
 
                 このようにelif句は、上の条件式(a == b)がFalseとなった場合に、さらに異なる条件式(a < b)を評価することができる。
-                else句の処理の中にif文をネストして記述するのと同様の挙動を得られるため、可読性の観点から、elif句を使用することが推奨される。以下に、同様の挙動を示すネストされた例を載せておくが、どちらが読みやすいかは一目瞭然だろう。
+                else句の処理の中にif文をネストして記述するのと同様の挙動を得られるため、可読性の観点から、elif句を使用することが推奨される。以下に、同様の挙動を示すネストされた例を載せておく。
 
                 <PyScript>
                     a = 2
@@ -134,8 +134,8 @@
                 例では、5回反復させている。
 
                 <PyScript>
-                    for i in range(5):
-                        print(i)
+                    for _ in range(5):
+                        print('Hello World!')
                 </PyScript>
 
                 <span class="text-yellow-400">range()</span>関数は、引数にint型を取る。任意の自然数をnとすれば、range(n)は区間[0, n)に含まれる全ての整数をlist(厳密には、range型)として返す。以下を実行して、確認してみると良い。
@@ -249,7 +249,7 @@
                     sum += 1
                     if (sum > 5):
                         flag = False
-                print('finish!')
+                print('Correct!')
             </PyScript>
         </Paragraph>
 
@@ -264,14 +264,12 @@
         </Paragraph>
 
         <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 任意の実数x(rad)に対して、sin(x)の値を求めるプログラムを書け。ただし、必要な計算精度は7桁程度とし、以下のpiの値を利用しても良いものとする。</SubHeader>
-            <Hint level="hard">愚直にテイラー展開しても良いが、周期性を利用することで効率的なコードが書ける。(練習のため、numpyの組み込み関数に頼らず自作してみよう。)</Hint>
+            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 任意の実数x(rad)に対して、sin(x)の値を出力するプログラムを書け。ただし、必要な計算精度は10桁程度とし、以下のpiの値を利用しても良いものとする。</SubHeader>
+            <Hint level="hard">関数の周期性を利用することで効率的なコードが書ける。</Hint>
 
             <PyScript>
-                import numpy
-
-                pi: float = numpy.pi
-                x = pi / 2 
+                pi: float = 3.14159265359
+                x: float = pi / 2 
                 # 続きを書いてね
             </PyScript>
         </Paragraph>
