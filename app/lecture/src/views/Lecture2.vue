@@ -44,10 +44,10 @@
                 それでは、以下の例を見てif文の挙動を確認しよう。
 
                 <PyScript>
-                    a = 2       # aに整数を代入
-                    b = 2       # bに整数を代入
+                    a = 2
+                    b = 2
                     if (a == b):                    # 条件式の後ろの:(コロン)を忘れないように
-                        print("a is equal to b")    # 分岐処理はインデント(Tabキー押下)すること
+                        print("a is equal to b")    # 分岐処理はインデント(Tab or スペース)すること
                     print("finish")
                 </PyScript>
 
@@ -89,7 +89,7 @@
                 </PyScript>
 
                 このようにelif句は、上の条件式(a == b)がFalseとなった場合に、さらに異なる条件式(a < b)を評価することができる。
-                else句の処理の中にif文をネストして記述するのと同様の挙動を得られるため、可読性の観点から、elif句を使用することが推奨される。以下に、同様の挙動を示すネストされた例を載せておくが、どちらが読みやすいかは一目瞭然だろう。
+                else句の処理の中にif文をネストして記述するのと同様の挙動を得られるため、可読性の観点から、elif句を使用することが推奨される。以下に、同様の挙動を示すネストされた例を載せておく。
 
                 <PyScript>
                     a = 2
@@ -125,7 +125,7 @@
                 コロンやインデントなど、その記法はif文に見られるものと同様である。
                 また、for文は原則として反復する対象となるイテラブル(<span class="text-yellow-400">iterable</span>)が必要であるため、ここでは、複数の文字列を含むlist型の変数fruitsを定義して渡している。
                 イテラブルの各要素は、インデックス(<span class="text-yellow-400">index</span>)のfruitに順に代入されていく。
-                配列(list)については次項で詳説するので、今は、"複数のデータが入った入れ物"という認識で構わない。
+                配列(list)については次回に詳説するので、今は、"複数のデータが入った入れ物"という認識で構わない。
             </Paragraph>
 
             <SubHeader>指定回数だけ反復させる</SubHeader>
@@ -134,8 +134,8 @@
                 例では、5回反復させている。
 
                 <PyScript>
-                    for i in range(5):
-                        print(i)
+                    for _ in range(5):
+                        print('Hello World!')
                 </PyScript>
 
                 <span class="text-yellow-400">range()</span>関数は、引数にint型を取る。任意の自然数をnとすれば、range(n)は区間[0, n)に含まれる全ての整数をlist(厳密には、range型)として返す。以下を実行して、確認してみると良い。
@@ -170,10 +170,10 @@
 
                 <PyScript>
                     sum = 0                     # 合計値を初期化
-                    for i in range(1, 50+1):    # 1から50までの数列を生成
-                        sum += i                # 合計値にインデックスの値を足す
+                    for i in range(1, 50+1):
+                        sum += i
                         if (sum >= 100):        # 合計が100以上の時
-                            print(i)            # 100以上となった時のインデックスを出力
+                            print(i)
                             break               # イテレーションを脱出する
                 </PyScript>
 
@@ -198,7 +198,7 @@
                     print("finish")
                 </PyScript>
 
-                記法自体は、if文のそれと違わない。
+                記法自体は、if文のそれと違いない。
                 上の例では、a < 100という条件式がTrueの間、即ち aが100未満 である間はa += 1が繰り返され続ける。
                 条件式がFalseになるとwhile文から離脱し、次の処理へと移行する。
                 また、while文においても、for文と同様にcontinue句やbreak句を使うことができる。
@@ -230,50 +230,49 @@
 
         <Header>4.練習問題</header>
         <Paragraph>
-            鋭意、制作中です! しばしお待ちを。
-        </Paragraph>
-        <!-- <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 名前を尋ね、それを出力するプログラムを書け。</SubHeader>
-            <Hint level="easy"><span class="text-yellow-400">input()</span>関数を使うと、入力された文字列を取得できる。</Hint>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 1以上x未満の範囲に含まれる奇数の総和を求めるプログラムを書け。</SubHeader>
+            <Hint level="easy1"><span class="text-yellow-400">range()</span>関数を使うと、list型(厳密にはrange型)の数列を取得できる。</Hint>
 
             <PyScript>
-                name = input("What is your name? &gt; ")
+                x: int = 100
                 # 続きを書いてね
             </PyScript>
         </Paragraph>
 
         <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 入力された2数の平均を求めるプログラムを書け。</SubHeader>
-            <Hint level="med1">input()関数から返されるデータは、<span class="text-yellow-400">str</span>型であることに注意しよう。</Hint>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 次のプログラムのエラーの原因を特定し、修正せよ。</SubHeader>
+            <Hint level="easy2">宣言されていない変数は呼び出せない。</Hint>
 
             <PyScript>
-                num1 = input("First number &gt; ")
-                num2 = input("Second number &gt; ")
+                sum = 0
+                while (flag):
+                    sum += 1
+                    if (sum > 5):
+                        flag = False
+                print('Correct!')
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 入力された自然数に対して、適切な序数を出力するプログラムを書け。例えば、1が入力された時に"1st"を返すこと。</SubHeader>
+            <Hint level="med">1の位の数に応じて条件分岐させること。ただし、例外がいくつか存在するので注意せよ。</Hint>
+
+            <PyScript>
+                num = input()
                 # 続きを書いてね
             </PyScript>
         </Paragraph>
 
         <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 次のプログラムのエラーの原因を特定し、修正せよ。</SubHeader>
-            <Hint level="med2">int型 + str型 = ?</Hint>
+            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 任意の実数x(rad)に対して、sin(x)の値を出力するプログラムを書け。ただし、必要な計算精度は10桁程度とし、以下のpiの値を利用しても良いものとする。</SubHeader>
+            <Hint level="hard">関数の周期性を利用することで効率的なコードが書ける。</Hint>
 
             <PyScript>
-                a = 10              # aに10を代入
-                b = "5.5"           # bに"5.5"を代入
-                print(float(a + b)) # str型をfloat型にキャストして足す  
-            </PyScript>
-        </Paragraph>
-
-        <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 1番目に入力された整数から2番目に入力された整数を引いた結果を出力するプログラムを書け。ただし、算術演算子のうち使えるのは + のみとする。</SubHeader>
-            <Hint level="hard"><span class="text-yellow-400">ビット演算</span>について調べてみよう。</Hint>
-
-            <PyScript>
-                num1 = input("First number &gt; ")
-                num2 = input("Second number &gt; ")
+                pi: float = 3.14159265359
+                x: float = pi / 2 
                 # 続きを書いてね
             </PyScript>
-        </Paragraph> -->
+        </Paragraph>
 
         <ProgressFooter :progress="completion" class="mt-16" />
         <div class="text-center my-5">
