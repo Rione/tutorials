@@ -44,8 +44,8 @@
                 それでは、以下の例を見てif文の挙動を確認しよう。
 
                 <PyScript>
-                    a = 2       # aに整数を代入
-                    b = 2       # bに整数を代入
+                    a = 2
+                    b = 2
                     if (a == b):                    # 条件式の後ろの:(コロン)を忘れないように
                         print("a is equal to b")    # 分岐処理はインデント(Tab or スペース)すること
                     print("finish")
@@ -170,10 +170,10 @@
 
                 <PyScript>
                     sum = 0                     # 合計値を初期化
-                    for i in range(1, 50+1):    # 1から50までの数列を生成
-                        sum += i                # 合計値にインデックスの値を足す
+                    for i in range(1, 50+1):
+                        sum += i
                         if (sum >= 100):        # 合計が100以上の時
-                            print(i)            # 100以上となった時のインデックスを出力
+                            print(i)
                             break               # イテレーションを脱出する
                 </PyScript>
 
@@ -198,7 +198,7 @@
                     print("finish")
                 </PyScript>
 
-                記法自体は、if文のそれと違わない。
+                記法自体は、if文のそれと違いない。
                 上の例では、a < 100という条件式がTrueの間、即ち aが100未満 である間はa += 1が繰り返され続ける。
                 条件式がFalseになるとwhile文から離脱し、次の処理へと移行する。
                 また、while文においても、for文と同様にcontinue句やbreak句を使うことができる。
