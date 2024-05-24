@@ -69,7 +69,7 @@
             </Paragraph>
 
             <Paragraph>
-                おまけ: Pythonにおけるlistは、一般的なCやJavaの配列とは異なり、動的配列(<span class="text-yellow-400">dynamic array</span>)である。これは、list内のデータが増減するたびに、自動的にメモリ領域が再割り当てされるということである。事前に定まったメモリ領域を確保し、管理するという手間は生じない。<br>
+                補足: Pythonにおけるlistは、一般的なCやJavaの配列とは異なり、動的配列(<span class="text-yellow-400">dynamic array</span>)である。これは、list内のデータが増減するたびに、自動的にメモリ領域が再割り当てされるということである。従って、事前に定まったメモリ領域を確保し、管理するという手間は生じない。<br>
                 これは、C++におけるstd::vectorやJavaにおけるjava.util.ArrayListなどのライブラリが実装するものと同様の機能である。
             </Paragraph>
 
@@ -107,6 +107,64 @@
                 これをrange()関数に渡すことで、listのindexに対応した数列が得られる。
             </Paragraph>
 
+            <SubHeader>要素の追加、削除</SubHeader>
+            <Paragraph>
+                配列に要素を追加するためには、いくつかの方法がある。代表的なものを以下に挙げる。
+
+                <PyScript>
+                    food = ['Apple', 'Banana', 'Cherry', 'Durian', 'Eggplant']
+
+                    food.append('Fennel')
+                    print(food)
+                </PyScript>
+
+                <PyScript>
+                    food = ['Apple', 'Banana', 'Cherry', 'Durian', 'Eggplant']
+
+                    food += ['Fennel']
+                    print(food)
+                </PyScript>
+
+                <PyScript>
+                    food = ['Apple', 'Banana', 'Cherry', 'Durian', 'Eggplant']
+
+                    food.insert(5, 'Fennel')
+                    print(food)
+                </PyScript>
+            </Paragraph>
+
+            <Paragraph>
+                配列の要素を削除するためにも、いくつかの方法がある。代表的なものを以下に挙げる。
+
+                <PyScript>
+                    food = ['Apple', 'Banana', 'Cherry', 'Durian', 'Eggplant']
+
+                    food.remove('Eggplant')
+                    print(food)
+                </PyScript>
+
+                <PyScript>
+                    food = ['Apple', 'Banana', 'Cherry', 'Durian', 'Eggplant']
+
+                    food.pop(4)
+                    print(food)
+                </PyScript>
+
+                <PyScript>
+                    food = ['Apple', 'Banana', 'Cherry', 'Durian', 'Eggplant']
+
+                    del food[4]
+                    print(food)
+                </PyScript>
+
+                <PyScript>
+                    food = ['Apple', 'Banana', 'Cherry', 'Durian', 'Eggplant']
+
+                    food = [i for i in food if i != 'Eggplant']
+                    print(food)
+                </PyScript>
+            </Paragraph>
+
             <SubHeader>配列のコピー</SubHeader>
             <Paragraph>
                 データのコピーには、<span class="text-yellow-400">deep copy</span>と<span class="text-yellow-400">shallow copy</span>の2種類が存在する。
@@ -134,13 +192,13 @@
                 では次に、shallow copyの例を見てみよう。
 
                 <PyScript>
-                    sequence1 = [1, 1, 2, 3, 5, 8, 13]
+                    sequence1 = [0, 1, 2, 3, 5, 8, 13]
                     sequence2 = sequence1           # shallow copy
 
                     print(f'Before: seq1 = {sequence1}')
                     print(f'Before: seq2 = {sequence2}')
 
-                    sequence1[0] = 0                # コピーの参照元を書き換え
+                    sequence1[0] = 1                # コピーの参照元を書き換え
 
                     print(f'After: seq1 = {sequence1}')
                     print(f'After: seq2 = {sequence2}')
@@ -150,175 +208,148 @@
                 shallow copyでは、コピーされるのはコピー元のオブジェクト(変数)のみであり、実体となるメモリ上のデータは共有される。
                 つまり、同じデータに対して異なる変数名を使ってアクセスしていることに相違ない。
             </Paragraph>
-        </Paragraph>
 
-
-        <Header>2.for文</Header>
-        <Paragraph>
-            <span class="text-yellow-400">for</span>文は、反復処理(<span class="text-yellow-400">iteration</span>)を実現したい時に用いる構文である。
-            for文は、Python以外のプログラミング言語でも広く実装されており、その使い方も類似している。
-
-            <SubHeader>for文の基本</SubHeader>
             <Paragraph>
-                まずは、以下の例を見てfor文の概観を掴むとしよう。
+                配列をdeep copyしたい場合には、copyモジュールの<span class="text-yellow-400">deepcopy()</span>関数を使うか、以下のように、for文で各要素を一つずつコピーする方法がある。
 
                 <PyScript>
-                    fruits = ["Apple", "Banana", "Cherry"]
+                    food = ['Apple', 'Banana', 'Cherry', 'Durian', 'Eggplant']
+                    new_food = [i for i in food]
 
-                    for fruit in fruits:    # コロンを付すこと
-                        print(fruit)        # インデント
+                    food[0] = 'Avocado'
+
+                    print(f'food: {food}')
+                    print(f'new_food: {new_food}')
                 </PyScript>
-
-                コロンやインデントなど、その記法はif文に見られるものと同様である。
-                また、for文は原則として反復する対象となるイテラブル(<span class="text-yellow-400">iterable</span>)が必要であるため、ここでは、複数の文字列を含むlist型の変数fruitsを定義して渡している。
-                イテラブルの各要素は、インデックス(<span class="text-yellow-400">index</span>)のfruitに順に代入されていく。
-                配列(list)については次回に詳説するので、今は、"複数のデータが入った入れ物"という認識で構わない。
             </Paragraph>
 
-            <SubHeader>指定回数だけ反復させる</SubHeader>
+            <SubHeader>おまけ: 多次元配列</SubHeader>
             <Paragraph>
-                これを応用して、指定回数だけ処理を実行するコードを以下に示す。
-                例では、5回反復させている。
+                これまで見てきた配列は、すべて<span class="text-yellow-400">1次元配列</span>(one-dimensional array, linear array)であった。
+                つまり、要素が一方向のみに増えていく1次元的な配列である。
+                これに対し、要素がn方向に向かって増えていくものを一般に<span class="text-yellow-400">n次元配列</span>(n-dimensional array)と呼ぶ。
+                以下は、2次元配列の例である。
 
                 <PyScript>
-                    for i in range(5):
-                        print(i)
+                    matrix = [
+                                [1, 2, 3],
+                                [4, 5, 6],
+                                [7, 8, 9]
+                            ]
+
+                    print(matrix[1][2])
                 </PyScript>
 
-                <span class="text-yellow-400">range()</span>関数は、引数にint型を取る。任意の自然数をnとすれば、range(n)は区間[0, n)に含まれる全ての整数をlist(厳密には、range型)として返す。以下を実行して、確認してみると良い。
-
-                <PyScript>
-                    list(range(5))
-                </PyScript>
-
-                したがって、range()関数の引数に渡した整数回だけ、反復処理を実行することができる。
-            </Paragraph>
-
-            <SubHeader>continue句とbreak句</SubHeader>
-            <Paragraph>
-                for文とif文を組み合わせることで、より複雑な処理を実行することができる。
-                以下は、イテレーションが偶数のインデックスを持つ時のみ、インデックスを出力するプログラムである。
-
-                <PyScript>
-                    for i in range(10+1):
-                        if (i % 2 == 1):    # インデックスが奇数の時
-                            continue        # 次のイテレーションへスキップする
-                        else:
-                            print(i)
-                </PyScript>
-
-                上の例では、i % 2 == 1 即ち iが奇数の時 には<span class="text-yellow-400">continue</span>句が実行される。
-                continue句は次のイテレーションへとスキップしたい時に用いられるが、上のような単純なプログラムであればcontinue句を必ずしも必要としないこともある。
-            </Paragraph>
-
-            <Paragraph>
-                <span class="text-yellow-400">break</span>句は、イテレーションから抜け出したい時に用いる。
-                以下の例は、1から順に自然数を足していき、その合計が100以上になった時点でイテレーションから脱出するプログラムである。
-
-                <PyScript>
-                    sum = 0                     # 合計値を初期化
-                    for i in range(1, 50+1):    # 1から50までの数列を生成
-                        sum += i                # 合計値にインデックスの値を足す
-                        if (sum >= 100):        # 合計が100以上の時
-                            print(i)            # 100以上となった時のインデックスを出力
-                            break               # イテレーションを脱出する
-                </PyScript>
-
-                上の例では反復する範囲が予め決められているが、このような、いつ条件が満たされるか分からないような反復処理に対しては、後述するwhile文を用いる方が良い。
-                また、各イテレーション間で値が共有されるべき変数(sum)は、for文より先に宣言・初期化される必要があることも覚えておこう。
+                ここで、配列が数学のベクトルや行列と似た概念であることに気づいた人がいるかもしれない。
+                実際、計算科学の文脈では配列のことをベクトルと呼ぶ場合もあるようである。
             </Paragraph>
         </Paragraph>
 
 
-        <Header>3.while文</Header>
+        <Header>2.辞書</Header>
         <Paragraph>
-            <span class="text-yellow-400">while</span>文も、反復処理のための構文であることには違いないが、反復の方法がfor文とは異なっている。具体的には、条件式がTrueである間、処理を繰り返し続ける。
-            
-            <SubHeader>while文の基本</SubHeader>
+            配列について理解できれば、辞書(<span class="text-yellow-400">dictionary</span>)を理解するのはそれほど難しいことではない。なぜなら、辞書は配列のindexの代わりに任意のキー(<span class="text-yellow-400">key</span>)を用いるに過ぎないからである。
+
+            <SubHeader>辞書の基本</SubHeader>
             <Paragraph>
-                まずは以下の例を見てみよう。
+                とりあえず、辞書の実例を見てみるとしよう。
 
                 <PyScript>
-                    a = 0
-                    while (a < 100):
-                        a += 1
-                    print("finish")
+                    me = {"name": "John", "age": 10, "hobby": "video game"}
+
+                    print(me["name"])
                 </PyScript>
 
-                記法自体は、if文のそれと違わない。
-                上の例では、a < 100という条件式がTrueの間、即ち aが100未満 である間はa += 1が繰り返され続ける。
-                条件式がFalseになるとwhile文から離脱し、次の処理へと移行する。
-                また、while文においても、for文と同様にcontinue句やbreak句を使うことができる。
+                このようにして、辞書は各要素にkey("name", "age", "hobby")を割り当てることができる。
+                要素にアクセスする際は、indexの代わりにkeyを用いる。
+                要素の順番を意識する必要がある配列とは異なり、keyを使用することで、任意の要素を絶対的に取り出すことができる。
+                当然ながら、keyは一意でなければならない。
             </Paragraph>
 
-            <SubHeader>while文の実際</SubHeader>
             <Paragraph>
-                while文は、ある特定の条件式をもとに反復処理を実行することができるが、実用上は、break句と併せて<span class="text-yellow-400">無限ループ</span>として用いられることも多い。例えば、以下のような場合である。
+                keyを使うということ以外は、ほとんど配列と変わらない。
+                以下は、辞書の要素を書き換える例である。
 
                 <PyScript>
-                    cube = 125
-                    cube_root = 1
-                    while True:
-                        if (cube_root ** 3 == cube):
-                            print(f"the cube root of {cube} is {cube_root}.")
-                            break
-                        elif (cube_root > cube / 2):
-                            print(f"the cube root of {cube} is not an integer.")
-                            break
-                        cube_root += 1
+                    me = {"name": "John", "age": 10, "hobby": "video game"}
+
+                    me["name"] = "Tom"
+                    print(me["name"])
+                </PyScript>
+            </Paragraph>
+
+            <SubHeader>辞書とfor文</SubHeader>
+            <Paragraph>
+                辞書には、要素の他にkeyが存在するため、for文ではその両方を取り出すことが可能である。
+                以下の例を見てみよう。
+
+                <PyScript>
+                    me = {"name": "John", "age": 10, "hobby": "video game"}
+
+                    for k, v in me.items():
+                        print(f'{k}: {v}')
                 </PyScript>
 
-                上の例は、与えられた立方数(cube)に対して、総当たりでその3乗根(cube_root)を求めるプログラムである。
-                ここでは、while句の条件式にTrueを指定することで無限ループを実装し、if文とbreak句の組み合わせによって反復を制御している。
-                このように、より複雑な反復の制御が必要になった場合には、while句の条件式を仮にTrue(または1)としておき、実際の制御をif文で行うこともできる。
+                配列のように、辞書単体をfor文に渡すことはできず、辞書のクラスメソッドである<span class="text-yellow-400">items()</span>関数を先に呼び出さねばならない。
+                すると、for文の1番目のindex(k)にはkeyが、2番目のindex(v)には要素の値(value)が渡される。
+            </Paragraph>
+
+            <SubHeader>要素の追加、削除</SubHeader>
+            <Paragraph>
+                辞書に要素を追加するためには、keyを指定する必要があることに注意しよう。
+                以下に代表的な方法を示す。
+
+                <PyScript>
+                    desktop = {"os": "Windows 11", "cpu": "Core i9-14900K"}
+
+                    desktop["gpu"] = "RTX 4090"
+                    print(desktop)
+                </PyScript>
+
+                <PyScript>
+                    desktop = {"os": "Windows 11", "cpu": "Core i9-14900K"}
+
+                    desktop.update(gpu="RTX 4090")
+                    print(desktop)
+                </PyScript>
+
+                <PyScript>
+                    desktop = {"os": "Windows 11", "cpu": "Core i9-14900K"}
+
+                    desktop.update({"gpu": "RTX 4090"})
+                    print(desktop)
+                </PyScript>
+            </Paragraph>
+
+            <SubHeader>配列と辞書</SubHeader>
+            <Paragraph>
+                配列と辞書は、互いに入れ子になることが可能である。
+                具体例を見てみるとしよう。
+
+                <PyScript>
+                    arr1 = [1, 2, 3]
+                    arr2 = [4, 5, 6]
+                    dict = {"array1": arr1, "array2": arr2}
+
+                    print(dict)
+                </PyScript>
+
+                <PyScript>
+                    person1 = {"name": "Mike", "age": 50}
+                    person2 = {"name": "Josh", "age": 20}
+                    arr = [person1, person2]
+                    
+                    print(arr)
+                </PyScript>
+
+                このようにして、多重なる階層を持つ配列・辞書を作ることも可能である。
             </Paragraph>
         </Paragraph>
 
 
         <Header>4.練習問題</header>
         <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 1以上x未満の範囲に含まれる奇数の総和を求めるプログラムを書け。</SubHeader>
-            <Hint level="easy1"><span class="text-yellow-400">range()</span>関数を使うと、list型(厳密にはrange型)の数列を取得できる。</Hint>
-
-            <PyScript>
-                x: int = 100
-                # 続きを書いてね
-            </PyScript>
-        </Paragraph>
-
-        <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 次のプログラムのエラーの原因を特定し、修正せよ。</SubHeader>
-            <Hint level="easy2">宣言されていない変数は呼び出せない。</Hint>
-
-            <PyScript>
-                sum = 0
-                while (flag):
-                    sum += 1
-                    if (sum > 5):
-                        flag = False
-                print('Correct!')
-            </PyScript>
-        </Paragraph>
-
-        <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 入力された自然数に対して、適切な序数を出力するプログラムを書け。例えば、1が入力された時に"1st"を返すこと。</SubHeader>
-            <Hint level="med">1の位の数に応じて条件分岐させること。ただし、例外がいくつか存在するので注意せよ。</Hint>
-
-            <PyScript>
-                num = input()
-                # 続きを書いてね
-            </PyScript>
-        </Paragraph>
-
-        <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 任意の実数x(rad)に対して、sin(x)の値を出力するプログラムを書け。ただし、必要な計算精度は10桁程度とし、以下のpiの値を利用しても良いものとする。</SubHeader>
-            <Hint level="hard">愚直にテイラー展開しても良いが、周期性を利用することで効率的なコードが書ける。</Hint>
-
-            <PyScript>
-                pi: float = 3.14159265359
-                x: float = pi / 2 
-                # 続きを書いてね
-            </PyScript>
+            近日公開! 乞うご期待
         </Paragraph>
 
         <ProgressFooter :progress="completion" class="mt-16" />
