@@ -6,7 +6,7 @@
     const lectures = ([
         {"title": "Python: データ型、変数、演算子"},
         {"title": "Python: if文、for文、while文"},
-        {"title": "Python: 配列・辞書"},
+        {"title": "Python: 配列、辞書"},
         {"title": "Python: 関数、pipの利用"},
         {"title": "Linux: 環境構築、Linuxの基礎知識、Linuxコマンド"},
         {"title": "Git: 環境構築、Gitコマンド"},
