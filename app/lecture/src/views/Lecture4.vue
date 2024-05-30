@@ -83,7 +83,7 @@
 
             <SubHeader>再帰関数</SubHeader>
             <Paragraph>
-                再帰関数(<span class="text-yellow-400">recursive function</span>)とは、関数の処理内で自身を再帰的に呼び出すような関数のことである。計算機科学の文脈では、トップダウン型のアプローチの一つである分割統治法を実現するために使用される。早速、実例を見てみよう。
+                再帰関数(<span class="text-yellow-400">recursive function</span>)とは、関数の処理内で自身を再帰的に呼び出すような関数のことである。計算科学の文脈では、トップダウン型のアプローチの一つである分割統治法を実現するために使用される。早速、実例を見てみよう。
 
                 <PyScript>
                     def sum(num):
@@ -139,7 +139,7 @@
 
             <SubHeader>ラムダ式</SubHeader>
             <Paragraph>
-                最後に、ラムダ式(<span class="text-yellow-400">lambda function</span>)について触れておこう。ラムダ式は無名関数とも呼ばれ、わざわざ関数名を与えるほどではない処理の塊に対して、サブルーチンとしてのまとまりを与えるのに使われる。以下に例を示そう。
+                最後に、ラムダ式(<span class="text-yellow-400">lambda function</span>)について触れておこう。ラムダ式は無名関数とも呼ばれ、わざわざ関数名を与えるほどではない処理に対して、サブルーチンとしてのまとまりを与えるのに使われる。以下に例を示そう。
 
                 <PyScript>
                     example = lambda x: x ** 2
