@@ -51,7 +51,7 @@
 
                 上の例では、1行目でstr型のデータを格納したlistを定義している。
                 listに格納されたデータは、food[0]のように、listの変数名の後ろにインデックス(<span class="text-yellow-400">index</span>)を指定することでアクセスできる。
-                ここで、indexが0オリジン(<span class="text-yellow-400">zero-based</span>)であることには十分注意してほしい。
+                ここで、indexが0オリジン(<span class="text-yellow-400">zero-based</span>)であることに十分注意してほしい。
             </Paragraph>
 
             <Paragraph>
@@ -248,7 +248,7 @@
 
         <Header>2.辞書</Header>
         <Paragraph>
-            配列について理解できれば、辞書(<span class="text-yellow-400">dictionary</span>)を理解するのはそれほど難しいことではない。なぜなら、辞書は配列のindexの代わりに任意のキー(<span class="text-yellow-400">key</span>)を用いるに過ぎないからである。
+            配列について理解できれば、辞書(<span class="text-yellow-400">dictionary</span>)を理解するのはそれほど難しいことではない。なぜなら辞書は、配列のindexにスカラー値以外のデータ型も用いられるに過ぎないからである。また、辞書のindexをキー(<span class="text-yellow-400">key</span>)と呼ぶ。
 
             <SubHeader>辞書の基本</SubHeader>
             <Paragraph>
@@ -321,9 +321,36 @@
                 </PyScript>
             </Paragraph>
 
+            <Paragraph>
+                次に、要素を削除する方法を示す。
+
+                <PyScript>
+                    desktop = {"os": "Windows 11", "cpu": "Xeon", "gpu": "RTX 4090"}
+
+                    desktop.pop("cpu")
+                    print(desktop)
+                </PyScript>
+                
+                <PyScript>
+                    desktop = {"os": "Windows 11", "cpu": "Xeon", "gpu": "RTX 4090"}
+
+                    del desktop["cpu"]
+                    print(desktop)
+                </PyScript>
+
+                <PyScript>
+                    desktop = {"os": "Windows 11", "cpu": "Xeon", "gpu": "RTX 4090"}
+
+                    desktop = {k: v for k, v in desktop.items() if k != "cpu"}
+                    print(desktop)
+                </PyScript>
+
+                このように、配列とほぼ同様にして値を操作することができる。
+            </Paragraph>
+
             <SubHeader>配列と辞書</SubHeader>
             <Paragraph>
-                配列と辞書は、互いに入れ子になることが可能である。
+                配列と辞書は、互いに入れ子にすることが可能である。
                 具体例を見てみるとしよう。
 
                 <PyScript>
@@ -357,12 +384,12 @@
 
             <PyScript>
                 data = [
-                    [133, 254,   0, 233,  45],
-                    [230,  43, 198, 172,  85],
-                    [ 75, 189,  34, 210, 222],
-                    [ 43, 240,  65, 184, 202],
-                    [139,  14,  78, 255, 164]
-                ]
+                            [133, 254,   0, 233,  45],
+                            [230,  43, 198, 172,  85],
+                            [ 75, 189,  34, 210, 222],
+                            [ 43, 240,  65, 184, 202],
+                            [139,  14,  78, 255, 164]
+                        ]
                 # 続きを書いてね
 
                 print(normalized_data)
@@ -387,15 +414,15 @@
 
             <PyScript>
                 A = [
-                    [1, 2, 3],
-                    [4, 5, 6],
-                    [7, 8, 9]
-                ]
+                        [1, 2, 3],
+                        [4, 5, 6],
+                        [7, 8, 9]
+                    ]
                 B = [
-                    [-1,  0,  1],
-                    [ 0,  1, -1],
-                    [ 1, -1, -1]
-                ]
+                        [-1,  0,  1],
+                        [ 0,  1, -1],
+                        [ 1, -1, -1]
+                    ]
                 # 続きを書いてね
 
                 print(C)
