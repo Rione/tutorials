@@ -31,7 +31,7 @@
 </script>
 
 <template>
-    <Title>第3講 Python: 配列・辞書</Title>
+    <Title>第3講 Python: 配列、辞書</Title>
 
     <div class="container w-3/6 mx-auto mb-10 text-start">
         <Header>1.配列</Header>
@@ -51,7 +51,7 @@
 
                 上の例では、1行目でstr型のデータを格納したlistを定義している。
                 listに格納されたデータは、food[0]のように、listの変数名の後ろにインデックス(<span class="text-yellow-400">index</span>)を指定することでアクセスできる。
-                ここで、indexが0オリジン(<span class="text-yellow-400">zero-based</span>)であることには十分注意してほしい。
+                ここで、indexが0オリジン(<span class="text-yellow-400">zero-based</span>)であることに十分注意してほしい。
             </Paragraph>
 
             <Paragraph>
@@ -69,7 +69,7 @@
             </Paragraph>
 
             <Paragraph>
-                補足: Pythonにおけるlistは、一般的なCやJavaの配列とは異なり、動的配列(<span class="text-yellow-400">dynamic array</span>)である。これは、list内のデータが増減するたびに、自動的にメモリ領域が再割り当てされるということである。従って、事前に定まったメモリ領域を確保し、管理するという手間は生じない。<br>
+                補足: Pythonにおけるlistは、一般的なCやJavaの配列とは異なり、動的配列(<span class="text-yellow-400">dynamic array</span>)である。これは、list内のデータが増減するたびに、自動的にメモリ領域が再割り当てされるということである。したがって、事前に定まったメモリ領域を確保し、管理するという手間は生じない。<br>
                 これは、C++におけるstd::vectorやJavaにおけるjava.util.ArrayListなどのライブラリが実装するものと同様の機能である。
             </Paragraph>
 
@@ -91,7 +91,7 @@
             </Paragraph>
 
             <Paragraph>
-                従って、配列の全ての要素を書き換えるためには次のようにすること。
+                したがって、配列の全ての要素を書き換えるためには次のようにすること。
 
                 <PyScript>
                     food = ['Apple', 'Banana', 'Cherry', 'Durian', 'Eggplant']
@@ -248,7 +248,7 @@
 
         <Header>2.辞書</Header>
         <Paragraph>
-            配列について理解できれば、辞書(<span class="text-yellow-400">dictionary</span>)を理解するのはそれほど難しいことではない。なぜなら、辞書は配列のindexの代わりに任意のキー(<span class="text-yellow-400">key</span>)を用いるに過ぎないからである。
+            配列について理解できれば、辞書(<span class="text-yellow-400">dictionary</span>)を理解するのはそれほど難しいことではない。なぜなら辞書は、配列のindexにスカラー値以外のデータ型も用いられるに過ぎないからである。また、辞書のindexをキー(<span class="text-yellow-400">key</span>)と呼ぶ。
 
             <SubHeader>辞書の基本</SubHeader>
             <Paragraph>
@@ -321,9 +321,36 @@
                 </PyScript>
             </Paragraph>
 
+            <Paragraph>
+                次に、要素を削除する方法を示す。
+
+                <PyScript>
+                    desktop = {"os": "Windows 11", "cpu": "Xeon", "gpu": "RTX 4090"}
+
+                    desktop.pop("cpu")
+                    print(desktop)
+                </PyScript>
+                
+                <PyScript>
+                    desktop = {"os": "Windows 11", "cpu": "Xeon", "gpu": "RTX 4090"}
+
+                    del desktop["cpu"]
+                    print(desktop)
+                </PyScript>
+
+                <PyScript>
+                    desktop = {"os": "Windows 11", "cpu": "Xeon", "gpu": "RTX 4090"}
+
+                    desktop = {k: v for k, v in desktop.items() if k != "cpu"}
+                    print(desktop)
+                </PyScript>
+
+                このように、配列とほぼ同様にして値を操作することができる。
+            </Paragraph>
+
             <SubHeader>配列と辞書</SubHeader>
             <Paragraph>
-                配列と辞書は、互いに入れ子になることが可能である。
+                配列と辞書は、互いに入れ子にすることが可能である。
                 具体例を見てみるとしよう。
 
                 <PyScript>
@@ -349,7 +376,72 @@
 
         <Header>3.練習問題</header>
         <Paragraph>
-            近日公開! 乞うご期待
+            作問者からのお願い: numpyを使わないで下さい。全問、一瞬で易化します。最後の問題のみ、あらかじめmathライブラリをインポートしておきました。
+        </Paragraph>
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 次のデータを正規化せよ。</SubHeader>
+            <Hint level="easy">グレイスケール(8bit)ですね。</Hint>
+
+            <PyScript>
+                data = [
+                            [133, 254,   0, 233,  45],
+                            [230,  43, 198, 172,  85],
+                            [ 75, 189,  34, 210, 222],
+                            [ 43, 240,  65, 184, 202],
+                            [139,  14,  78, 255, 164]
+                        ]
+                # 続きを書いてね
+
+                print(normalized_data)
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 次のデータを昇順(ascending order)に並べ替えよ。ただし、バブルソートを使うこと。</SubHeader>
+            <Hint level="med1">各データが泡のように浮かび上がってきます。</Hint>
+
+            <PyScript>
+                data = [5, 9, 3, 6, 2, 1, 3, 7, 8, 0]
+                # 続きを書いてね
+
+                print(sorted_data)
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 行列Aと行列Bの積を求めよ。</SubHeader>
+            <Hint level="med2">定義通りに計算しよう。(※手計算しないでね)</Hint>
+
+            <PyScript>
+                A = [
+                        [1, 2, 3],
+                        [4, 5, 6],
+                        [7, 8, 9]
+                    ]
+                B = [
+                        [-1,  0,  1],
+                        [ 0,  1, -1],
+                        [ 1, -1, -1]
+                    ]
+                # 続きを書いてね
+
+                print(C)
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] データAとデータBの相関係数を求めよ。</SubHeader>
+            <Hint level="med3">平方根は、<span class="text-yellow-400">math.sqrt()</span>関数で計算できる。</Hint>
+
+            <PyScript>
+                import math
+
+                data_A = [ 0,  3,  5,  9, -2,  1,  2, -4,  7,  8]
+                data_B = [ 3, 12,  6,  5,  4, -2,  3, -1,  9,  7]
+                # 続きを書いてね
+
+                print(cor_AB)
+            </PyScript>
         </Paragraph>
 
         <ProgressFooter :progress="completion" class="mt-16" />
