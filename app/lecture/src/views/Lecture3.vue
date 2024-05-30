@@ -370,7 +370,7 @@
         </Paragraph>
 
         <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 次のデータを昇順に並べ替えよ。ただし、バブルソートを使うこと。</SubHeader>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 次のデータを昇順(ascending order)に並べ替えよ。ただし、バブルソートを使うこと。</SubHeader>
             <Hint level="med1">各データが泡のように浮かび上がってきます。</Hint>
 
             <PyScript>
