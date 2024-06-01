@@ -8,8 +8,8 @@
         {"title": "Python: if文、for文、while文"},
         {"title": "Python: 配列、辞書"},
         {"title": "Python: 関数、ライブラリ"},
-        {"title": "Linux: 環境構築、Linuxの基礎知識、Linuxコマンド"},
-        {"title": "Git: 環境構築、Gitコマンド"},
+        {"title": "Linux: 概要、Linuxコマンド"},
+        {"title": "Git: 概要、Gitコマンド"},
     ])
 
     const output = ref('');
@@ -64,8 +64,9 @@
     <table class="mx-auto mt-20 sm:w-5/6 md:w-3/6 bg-neutral-900 rounded-lg border-2 border-solid border-green-700">
         <div class="flex-col space-y-0 space-x-0 text-start divide-y divide-green-600">
             <div v-for="(lecture, index) in lectures" class="w-full py-5 pl-5 hover:bg-green-600 hover:scale-105" @click="navigate(index)">
-                第{{ oneOriented(index) }}講: {{ lecture.title }}
+                第{{ oneOriented(index) }}講 {{ lecture.title }}
             </div>
+            <div class="w-full py-5 pl-5 hover:bg-green-600 hover:scale-105" @click="navigate(7 - 1)">演習問題 解答・解説</div>
         </div>
     </table>
 </template>
