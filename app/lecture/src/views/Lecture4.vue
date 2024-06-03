@@ -274,7 +274,119 @@
 
         <Header>3.最終問題</header>
         <Paragraph>
-            近日公開! 乞うご期待
+            問題を解くにあたって必要なライブラリは、全て、あらかじめインポートされています。
+            また、今回でPythonの講座は最終回となるので、いつもよりたくさんの問題を用意しました。
+            これまで学習した構文が網羅的に問われます。
+            ぜひ楽しんで挑戦してください。
+        </Paragraph>
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 与えられた2つの自然数の最大公約数を求めるプログラムを書け。</SubHeader>
+            <Hint level="easy1">ユークリッドの互除法(Euclidean algorithm)を使うと良い。</Hint>
+
+            <PyScript>
+                sum = 0
+                while (flag):
+                    sum += 1
+                    if (sum > 5):
+                        flag = False
+                print('Correct!')
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 次の配列からstr型のデータを全て取り除け。ただし、int型に変換できる場合には取り除かずに変換せよ。</SubHeader>
+            <Hint level="easy2"><span class="text-yellow-400">type()</span>、あるいは<span class="text-yellow-400">isinstance()</span>関数を使うことで、データ型を調べられる。</Hint>
+
+            <PyScript>
+                x: int = 100
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 与えられた英文を単語ごとに区切り、含まれる単語数をカウントするプログラムを書け。</SubHeader>
+            <Hint level="easy3">str型の実態は、配列である。<span class="text-yellow-400">split()</span>関数を使おう。</Hint>
+
+            <PyScript>
+                x: int = 100
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] フィボナッチ数列の第1項から第n項までを出力するプログラムを書け。ただし、第1項と第2項は1とする。</SubHeader>
+            <Hint level="easy4">数列が漸化式で定義される場合、再帰関数との親和性が高い場合が多い。</Hint>
+
+            <PyScript>
+                x: int = 100
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 与えられた小文字を大文字に、大文字を小文字にそれぞれ変換するプログラムを書け。</SubHeader>
+            <Hint level="med1">"ASCII table"で検索してみよう。きっと分かるはずだ。</Hint>
+
+            <PyScript>
+                num = input()
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] sqrt(tan(x))の区間[0, pi/4]における定積分を求めるプログラムを書け。ただし、必要な計算精度は5桁程度とする。</SubHeader>
+            <Hint level="med2">積分は、その定義(Riemann integral)に立ち返って考えてみること。より精度が求められる場合には、台形積分を考えると良い。(某ヨビノリで見たって? 知らない子ですねえ。)</Hint>
+
+            <PyScript>
+                import math
+
+                num = input()
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 以下の配列を、マージソートによって昇順(ascending order)に並べ替え、さらに任意の数nを探索するプログラムを書け。</SubHeader>
+            <Hint level="hard2">ソートされたデータに対しては二分探索(<span class="text-yellow-400">binary search</span>)を行おう。</Hint>
+
+            <PyScript>
+                pi: float = 3.14159265359
+                x: float = pi / 2 
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 6面サイコロを指定回数転がした時、上面にある数字を求めるプログラムを書け。ただし、初期状態は上面を1、正面を3、正面から見て左面を2とし、サイコロは、奥、手前、左、右の4方向に回転できるものとする。</SubHeader>
+            <Hint level="hard2">classを用いてステートを管理すると実装しやすい。</Hint>
+
+            <PyScript>
+                pi: float = 3.14159265359
+                x: float = pi / 2 
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-purple-500 font-bold">Nightmare</span>] 以下のTakuzuを解くプログラムを書け。ただし、-1は空欄を示している。</SubHeader>
+            <Hint level="nightmare1">Takuzuは、Sudokuに似たパズルゲームである。まずは、インターネットでルールを調べてみると良い。</Hint>
+
+            <PyScript>
+                pi: float = 3.14159265359
+                x: float = pi / 2 
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-purple-500 font-bold">Nightmare</span>] 以下の暗号を解読せよ。ただし、次に示すコードは暗号化の際に用いられたプログラムである。</SubHeader>
+            <Hint level="nightmare2">どうやら、RSA方式が用いられているようです。</Hint>
+
+            <PyScript>
+                pi: float = 3.14159265359
+                x: float = pi / 2 
+                # 続きを書いてね
+            </PyScript>
         </Paragraph>
 
         <ProgressFooter :progress="completion" class="mt-16" />
