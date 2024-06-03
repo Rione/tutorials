@@ -284,12 +284,10 @@
             <Hint level="easy1">ユークリッドの互除法(Euclidean algorithm)を使うと良い。</Hint>
 
             <PyScript>
-                sum = 0
-                while (flag):
-                    sum += 1
-                    if (sum > 5):
-                        flag = False
-                print('Correct!')
+                num1 = 1071
+                num2 = 1029
+
+                print(gcd)
             </PyScript>
         </Paragraph>
 
@@ -298,8 +296,9 @@
             <Hint level="easy2"><span class="text-yellow-400">type()</span>、あるいは<span class="text-yellow-400">isinstance()</span>関数を使うことで、データ型を調べられる。</Hint>
 
             <PyScript>
-                x: int = 100
-                # 続きを書いてね
+                data = [3, 0, 7, 'Null', 'N/A', '6', 8, 'None', '5', '4', "2", 9, 1]
+
+                print(data)
             </PyScript>
         </Paragraph>
 
@@ -308,8 +307,9 @@
             <Hint level="easy3">str型の実態は、配列である。<span class="text-yellow-400">split()</span>関数を使おう。</Hint>
 
             <PyScript>
-                x: int = 100
-                # 続きを書いてね
+                sentence = "Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation."
+
+                print(word_count)
             </PyScript>
         </Paragraph>
 
@@ -318,7 +318,7 @@
             <Hint level="easy4">数列が漸化式で定義される場合、再帰関数との親和性が高い場合が多い。</Hint>
 
             <PyScript>
-                x: int = 100
+                n = 10
                 # 続きを書いてね
             </PyScript>
         </Paragraph>
