@@ -328,19 +328,18 @@
             <Hint unique_id="med1">"ASCII table"で検索してみよう。きっと分かるはずだ。</Hint>
 
             <PyScript>
-                num = input()
+                string = "wELCOME TO rI-ONE!"
                 # 続きを書いてね
             </PyScript>
         </Paragraph>
 
         <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] sqrt(tan(x))の区間[0, pi/4]における定積分を求めるプログラムを書け。ただし、必要な計算精度は5桁程度とする。</SubHeader>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] sqrt(tan(x))の区間[0, pi/4]における定積分を求めるプログラムを書け。ただし、必要な計算精度は5桁程度とし、math.sqrt()およびmath.tan()を使用しても良いものとする。</SubHeader>
             <Hint unique_id="med2">積分は、その定義(Riemann integral)に立ち返って考えてみること。より精度が求められる場合には、台形積分を考えると良い。(某ヨビノリで見たって? 知らない子ですねえ。)</Hint>
 
             <PyScript>
                 import math
 
-                num = input()
                 # 続きを書いてね
             </PyScript>
         </Paragraph>
@@ -350,9 +349,11 @@
             <Hint unique_id="hard1">ソートされたデータに対しては二分探索(<span class="text-yellow-400">binary search</span>)を行おう。</Hint>
 
             <PyScript>
-                pi: float = 3.14159265359
-                x: float = pi / 2 
+                n = 9
+                data = [5, 9, 3, 6, 2, 1, 3, 7, 8, 0]
                 # 続きを書いてね
+
+                print(sorted_data)
             </PyScript>
         </Paragraph>
 
@@ -361,26 +362,32 @@
             <Hint unique_id="hard2">classを用いてステートを管理すると実装しやすい。</Hint>
 
             <PyScript>
-                pi: float = 3.14159265359
-                x: float = pi / 2 
-                # 続きを書いてね
+                # 自力で書いてね
             </PyScript>
         </Paragraph>
 
         <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-purple-500 font-bold">Nightmare</span>] 以下のTakuzuを解くプログラムを書け。ただし、-1は空欄を示している。</SubHeader>
-            <Hint unique_id="nightmare1">Takuzuは、Sudokuに似たパズルゲームである。まずは、インターネットでルールを調べてみると良い。</Hint>
+            <SubHeader class="mb-3">[<span class="text-purple-500 font-bold">INSANE</span>] 以下のTakuzuを解くプログラムを書け。ただし、-1は空欄を示している。</SubHeader>
+            <Hint unique_id="insane1">Takuzuは、Sudokuに似たパズルゲームである。まずは、インターネットでルールを調べてみると良い。</Hint>
 
             <PyScript>
-                pi: float = 3.14159265359
-                x: float = pi / 2 
+                grid = [
+                            [ 1, -1, -1, -1, -1,  1],
+                            [ 1, -1, -1,  0,  1, -1],
+                            [-1,  1,  0, -1, -1, -1],
+                            [-1, -1,  1,  0, -1,  1],
+                            [-1, -1, -1,  1, -1, -1],
+                            [-1, -1, -1, -1,  0, -1]
+                        ]
+
                 # 続きを書いてね
+                print(filled_grid)
             </PyScript>
         </Paragraph>
 
         <Paragraph>
-            <SubHeader class="mb-3">[<span class="text-purple-500 font-bold">Nightmare</span>] 以下の暗号を解読せよ。ただし、次に示すコードは暗号化の際に用いられたプログラムである。</SubHeader>
-            <Hint unique_id="nightmare2">どうやら、RSA方式が用いられているようです。</Hint>
+            <SubHeader class="mb-3">[<span class="text-purple-500 font-bold">INSANE</span>] 以下の暗号を解読せよ。ただし、次に示すコードは暗号化の際に用いられたプログラムである。</SubHeader>
+            <Hint unique_id="insane2">これが真の最終問題です。</Hint>
 
             <PyScript>
                 pi: float = 3.14159265359
