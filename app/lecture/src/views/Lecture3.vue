@@ -380,7 +380,7 @@
         </Paragraph>
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 次のデータを正規化せよ。</SubHeader>
-            <Hint level="easy">グレイスケール(8bit)ですね。</Hint>
+            <Hint unique_id="easy">グレイスケール(8bit)ですね。</Hint>
 
             <PyScript>
                 data = [
@@ -398,7 +398,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 次のデータを昇順(ascending order)に並べ替えよ。ただし、バブルソートを使うこと。</SubHeader>
-            <Hint level="med1">各データが泡のように浮かび上がってきます。</Hint>
+            <Hint unique_id="med1">各データが泡のように浮かび上がってきます。</Hint>
 
             <PyScript>
                 data = [5, 9, 3, 6, 2, 1, 3, 7, 8, 0]
@@ -410,7 +410,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 行列Aと行列Bの積を求めよ。</SubHeader>
-            <Hint level="med2">定義通りに計算しよう。(※手計算しないでね)</Hint>
+            <Hint unique_id="med2">定義通りに計算しよう。(※手計算しないでね)</Hint>
 
             <PyScript>
                 A = [
@@ -431,7 +431,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] データAとデータBの相関係数を求めよ。</SubHeader>
-            <Hint level="med3">平方根は、<span class="text-yellow-400">math.sqrt()</span>関数で計算できる。</Hint>
+            <Hint unique_id="med3">平方根は、<span class="text-yellow-400">math.sqrt()</span>関数で計算できる。</Hint>
 
             <PyScript>
                 import math
