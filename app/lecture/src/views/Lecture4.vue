@@ -216,7 +216,7 @@
                 標準ライブラリはインストール不要だが、外部ライブラリはインターネットからのインストールが必要である。
                 ライブラリのインストールは、<span class="text-yellow-400">pip</span>などのパッケージインストーラを介して行うのが一般的である。
 
-                <Code><span class="text-green-600">pip</span> --version</Code>
+                <Code unique_id="1" language="bash" content="pip --version">$ <span class="text-green-600">pip</span> --version</Code>
 
                 上のコマンドで、使用している環境にpipがインストールされているか確認することができる。
                 もし"pip: not found"となる場合は、まずpip自体をインストールする必要がある。
@@ -227,7 +227,7 @@
                 pipがインストールされていることを確認したら、今度は外部ライブラリをインストールしてみよう。
                 以下のコマンドは、<span class="text-yellow-400">OpenCV</span>と呼ばれる、画像処理の際に用いる外部ライブラリをインストールする。
 
-                <Code><span class="text-green-600">pip</span> install opencv-python</Code>
+                <Code unique_id="2" language="bash" content="pip install opencv-python">$ <span class="text-green-600">pip</span> install opencv-python</Code>
 
                 その他、インストールしたいライブラリがある場合は、<a href="https://pypi.org/" class="underline text-blue-200">Python Package Index (PyPI)</a>で検索してみると良い。
                 インストールする際のコマンドをコピー&ペーストすることができる。
@@ -281,7 +281,7 @@
         </Paragraph>
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 与えられた2つの自然数の最大公約数を求めるプログラムを書け。</SubHeader>
-            <Hint level="easy1">ユークリッドの互除法(Euclidean algorithm)を使うと良い。</Hint>
+            <Hint unique_id="easy1">ユークリッドの互除法(Euclidean algorithm)を使うと良い。</Hint>
 
             <PyScript>
                 num1 = 1071
@@ -293,7 +293,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 次の配列からstr型のデータを全て取り除け。ただし、int型に変換できる場合には取り除かずに変換せよ。</SubHeader>
-            <Hint level="easy2"><span class="text-yellow-400">type()</span>、あるいは<span class="text-yellow-400">isinstance()</span>関数を使うことで、データ型を調べられる。</Hint>
+            <Hint unique_id="easy2"><span class="text-yellow-400">type()</span>、あるいは<span class="text-yellow-400">isinstance()</span>関数を使うことで、データ型を調べられる。</Hint>
 
             <PyScript>
                 data = [3, 0, 7, 'Null', 'N/A', '6', 8, 'None', '5', '4', "2", 9, 1]
@@ -304,7 +304,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 与えられた英文を単語ごとに区切り、含まれる単語数をカウントするプログラムを書け。</SubHeader>
-            <Hint level="easy3">str型の実態は、配列である。<span class="text-yellow-400">split()</span>関数を使おう。</Hint>
+            <Hint unique_id="easy3">str型の実態は、配列である。<span class="text-yellow-400">split()</span>関数を使おう。</Hint>
 
             <PyScript>
                 sentence = "Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation."
@@ -315,7 +315,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] フィボナッチ数列の第1項から第n項までを出力するプログラムを書け。ただし、第1項と第2項は1とする。</SubHeader>
-            <Hint level="easy4">数列が漸化式で定義される場合、再帰関数との親和性が高い場合が多い。</Hint>
+            <Hint unique_id="easy4">数列が漸化式で定義される場合、再帰関数との親和性が高い場合が多い。</Hint>
 
             <PyScript>
                 n = 10
@@ -325,7 +325,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 与えられた小文字を大文字に、大文字を小文字にそれぞれ変換するプログラムを書け。</SubHeader>
-            <Hint level="med1">"ASCII table"で検索してみよう。きっと分かるはずだ。</Hint>
+            <Hint unique_id="med1">"ASCII table"で検索してみよう。きっと分かるはずだ。</Hint>
 
             <PyScript>
                 num = input()
@@ -335,7 +335,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] sqrt(tan(x))の区間[0, pi/4]における定積分を求めるプログラムを書け。ただし、必要な計算精度は5桁程度とする。</SubHeader>
-            <Hint level="med2">積分は、その定義(Riemann integral)に立ち返って考えてみること。より精度が求められる場合には、台形積分を考えると良い。(某ヨビノリで見たって? 知らない子ですねえ。)</Hint>
+            <Hint unique_id="med2">積分は、その定義(Riemann integral)に立ち返って考えてみること。より精度が求められる場合には、台形積分を考えると良い。(某ヨビノリで見たって? 知らない子ですねえ。)</Hint>
 
             <PyScript>
                 import math
@@ -347,7 +347,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 以下の配列を、マージソートによって昇順(ascending order)に並べ替え、さらに任意の数nを探索するプログラムを書け。</SubHeader>
-            <Hint level="hard2">ソートされたデータに対しては二分探索(<span class="text-yellow-400">binary search</span>)を行おう。</Hint>
+            <Hint unique_id="hard1">ソートされたデータに対しては二分探索(<span class="text-yellow-400">binary search</span>)を行おう。</Hint>
 
             <PyScript>
                 pi: float = 3.14159265359
@@ -358,7 +358,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 6面サイコロを指定回数転がした時、上面にある数字を求めるプログラムを書け。ただし、初期状態は上面を1、正面を3、正面から見て左面を2とし、サイコロは、奥、手前、左、右の4方向に回転できるものとする。</SubHeader>
-            <Hint level="hard2">classを用いてステートを管理すると実装しやすい。</Hint>
+            <Hint unique_id="hard2">classを用いてステートを管理すると実装しやすい。</Hint>
 
             <PyScript>
                 pi: float = 3.14159265359
@@ -369,7 +369,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-purple-500 font-bold">Nightmare</span>] 以下のTakuzuを解くプログラムを書け。ただし、-1は空欄を示している。</SubHeader>
-            <Hint level="nightmare1">Takuzuは、Sudokuに似たパズルゲームである。まずは、インターネットでルールを調べてみると良い。</Hint>
+            <Hint unique_id="nightmare1">Takuzuは、Sudokuに似たパズルゲームである。まずは、インターネットでルールを調べてみると良い。</Hint>
 
             <PyScript>
                 pi: float = 3.14159265359
@@ -380,7 +380,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-purple-500 font-bold">Nightmare</span>] 以下の暗号を解読せよ。ただし、次に示すコードは暗号化の際に用いられたプログラムである。</SubHeader>
-            <Hint level="nightmare2">どうやら、RSA方式が用いられているようです。</Hint>
+            <Hint unique_id="nightmare2">どうやら、RSA方式が用いられているようです。</Hint>
 
             <PyScript>
                 pi: float = 3.14159265359
