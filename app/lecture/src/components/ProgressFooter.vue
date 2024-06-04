@@ -1,6 +1,9 @@
 <script setup>
     defineProps({
-        progress: Number
+        progress: {
+            type: Number,
+            default: 0,
+        },
     })
 </script>
 
