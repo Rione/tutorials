@@ -231,7 +231,7 @@
         <Header>4.練習問題</header>
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 1以上x未満の範囲に含まれる奇数の総和を求めるプログラムを書け。</SubHeader>
-            <Hint level="easy1"><span class="text-yellow-400">range()</span>関数を使うと、list型(厳密にはrange型)の数列を取得できる。</Hint>
+            <Hint unique_id="easy1"><span class="text-yellow-400">range()</span>関数を使うと、list型(厳密にはrange型)の数列を取得できる。</Hint>
 
             <PyScript>
                 x: int = 100
@@ -241,7 +241,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 次のプログラムのエラーの原因を特定し、修正せよ。</SubHeader>
-            <Hint level="easy2">宣言されていない変数は呼び出せない。</Hint>
+            <Hint unique_id="easy2">宣言されていない変数は呼び出せない。</Hint>
 
             <PyScript>
                 sum = 0
@@ -255,7 +255,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 入力された自然数に対して、適切な序数を出力するプログラムを書け。例えば、1が入力された時に"1st"を返すこと。</SubHeader>
-            <Hint level="med">1の位の数に応じて条件分岐させること。ただし、例外がいくつか存在するので注意せよ。</Hint>
+            <Hint unique_id="med">1の位の数に応じて条件分岐させること。ただし、例外がいくつか存在するので注意せよ。</Hint>
 
             <PyScript>
                 num = input()
@@ -265,7 +265,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 任意の実数x(rad)に対して、sin(x)の値を出力するプログラムを書け。ただし、必要な計算精度は10桁程度とし、以下のpiの値を利用しても良いものとする。</SubHeader>
-            <Hint level="hard">関数の周期性を利用することで効率的なコードが書ける。</Hint>
+            <Hint unique_id="hard">関数の周期性を利用することで効率的なコードが書ける。</Hint>
 
             <PyScript>
                 pi: float = 3.14159265359
