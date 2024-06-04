@@ -226,7 +226,7 @@
         <Header>4.練習問題</header>
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 入力される名前を、"Your name is XXX."のように出力するプログラムを書け。</SubHeader>
-            <Hint level="easy"><span class="text-yellow-400">input()</span>関数を使うと、入力された文字列を取得できる。</Hint>
+            <Hint unique_id="easy"><span class="text-yellow-400">input()</span>関数を使うと、入力された文字列を取得できる。</Hint>
 
             <PyScript>
                 name = input()
@@ -236,7 +236,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 入力される2数(num1, num2)の平均を求めるプログラムを書け。</SubHeader>
-            <Hint level="med1">input()関数から返されるデータは、<span class="text-yellow-400">str</span>型であることに注意しよう。</Hint>
+            <Hint unique_id="med1">input()関数から返されるデータは、<span class="text-yellow-400">str</span>型であることに注意しよう。</Hint>
 
             <PyScript>
                 num1 = input()
@@ -247,7 +247,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 次のプログラムの誤りを指摘し、修正せよ。</SubHeader>
-            <Hint level="med2">プログラムは、括弧の内側から順に評価される。</Hint>
+            <Hint unique_id="med2">プログラムは、括弧の内側から順に評価される。</Hint>
 
             <PyScript>
                 a = input()         # aに任意の数を代入
@@ -258,7 +258,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 1番目の整数(num1)から2番目の整数(num2)を引いた結果を出力するプログラムを書け。ただし、算術演算子のうち使えるのは + のみとする。</SubHeader>
-            <Hint level="hard"><span class="text-yellow-400">ビット演算</span>について調べてみよう。</Hint>
+            <Hint unique_id="hard"><span class="text-yellow-400">ビット演算</span>について調べてみよう。</Hint>
 
             <PyScript>
                 num1: int = 10
