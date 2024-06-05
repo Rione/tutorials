@@ -23,34 +23,65 @@
         })
     }
 
-    onMounted(() => {
-            const html_text = "Ri-oneの<span id='target'>新入生歓迎講座</span>へようこそ。"
-            const conv_text = "Ri-oneの新入生歓迎講座へようこそ。";
-            const orig_text = "Ri-oneのしんにゅうせいかんげいこうざへようこそ。";
-            const speed     = 130; // Typing speed in milliseconds
-            var index       = 0;
+    const html_text = "Ri-oneの<span id='target'>新入生歓迎講座</span>へようこそ。"
+    const conv_text = "Ri-oneの新入生歓迎講座へようこそ。";
+    const orig_text = "Ri-oneのしんにゅうせいかんげいこうざへようこそ。";
+    const speed     = 130; // Typing speed in milliseconds
+    var index       = 0;
 
-            function typeNextCharacter() {
-                output.value += (orig_text[index]);
-                index++;
-                if (index < orig_text.length) {
-                    if (index == 14){
-                        output.value = (conv_text.slice(0, 11));
-                    } else if (index == 18){
-                        output.value = (conv_text.slice(0, 13));
-                    } else if (index == 22){
-                        output.value = (conv_text.slice(0, 15));
-                    }
-                    setTimeout(typeNextCharacter, speed);
-                } else if (index == orig_text.length) {
-                    output.value = html_text;
+    function typeNextCharacter() {
+        output.value += (orig_text[index]);
+        index++;
+        if (index < orig_text.length) {
+            if (index == 14){
+                output.value = (conv_text.slice(0, 11));
+            } else if (index == 18){
+                output.value = (conv_text.slice(0, 13));
+            } else if (index == 22){
+                output.value = (conv_text.slice(0, 15));
+            }
+            setTimeout(typeNextCharacter, speed);
+        } else if (index == orig_text.length) {
+            output.value = html_text;
+        }
+    };
+
+    let isScrolling = false;
+
+    function startScrolling() {
+            isScrolling = true;
+            var scrollText = document.getElementById('scroll-text');
+            var scrollContainer = document.getElementById('scroll-container');
+            var containerWidth = scrollContainer.offsetWidth;
+            var textWidth = scrollText.offsetWidth;
+
+            // Reset position
+            scrollText.style.left = containerWidth + 'px';
+
+            function animate() {
+                if (!isScrolling) return;
+                var currentLeft = parseFloat(scrollText.style.left);
+                scrollText.style.left = (currentLeft - 2) + 'px'; // Adjust speed by changing 2
+                if (currentLeft + textWidth > 0) {
+                    requestAnimationFrame(animate);
+                } else {
+                    startScrolling(); // Repeat animation
                 }
-            };
+            }
+            requestAnimationFrame(animate);
+        }
 
-            typeNextCharacter();
+    function stopScrolling() {
+        isScrolling = false;
+    }
+
+    onMounted(() => {
+        typeNextCharacter();
+        startScrolling();
     });
 
     onUnmounted(() => {
+        stopScrolling()
         output.value = "";
     });
 </script>
@@ -58,10 +89,15 @@
 <template>
     <div class="container mx-auto my-16">
         <h1 v-html="output" id="output" class="text-5xl"></h1><span class="typing-cursor"></span>
-        <div class="mt-2">※レスポンシブ非対応なのは内緒です。だって面倒くさ(ry</div>
+        <!-- <div class="mt-2">※レスポンシブ非対応なのは内緒です。だって面倒くさ(ry</div> -->
+        <div id="scroll-container" class="mx-auto w-4/6 mt-2">
+            <div id="scroll-text" class="text-md">ついにレスポンシブ対応しました! ところで、誰がこのページをスマホで開くのでしょうか...</div>
+        </div>
     </div>
 
-    <table class="mx-auto mt-20 sm:w-5/6 md:w-3/6 bg-neutral-900 rounded-lg border-2 border-solid border-green-700">
+    
+
+    <table class="mx-auto mt-20 w-full sm:w-5/6 md:w-4/6 bg-neutral-900 rounded-lg border-2 border-solid border-green-700">
         <div class="flex-col space-y-0 space-x-0 text-start divide-y divide-green-600">
             <div v-for="(lecture, index) in lectures" class="w-full py-5 pl-5 hover:bg-green-600 hover:scale-105" @click="navigate(index)">
                 第{{ oneOriented(index) }}講 {{ lecture.title }}
@@ -78,6 +114,18 @@
 
     #output {
         display: inline-block;
+    }
+
+    #scroll-container {
+        overflow: hidden;
+        white-space: nowrap;
+        box-sizing: border-box;
+    }
+
+    #scroll-text {
+        display: inline-block;
+        padding-right: 10%; /* Ensures the text starts off-screen */
+        position: relative;
     }
 
     .typing-cursor {

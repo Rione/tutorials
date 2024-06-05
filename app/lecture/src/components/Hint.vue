@@ -1,13 +1,16 @@
 <script setup>
     const props = defineProps({
-        level: String
+        unique_id: {
+            type: String,
+            default: '',
+        },
     })
 
     $(document).ready(function() {
         $('div.hint').hide();
 
         // When a hint button clicked
-        $('#hint-' + props.level + '-btn').click(function() {
+        $('#hint-' + props.unique_id + '-btn').click(function() {
             var button = $(this)
             var targetValue = button.attr('target');
 
@@ -23,8 +26,8 @@
 
 <template>
     <div class="mx-5">
-        <button :id="'hint-' + level + '-btn'" class="rounded p-1 bg-green-700 hover:bg-green-600" :target="'#hint-' + level">ヒントを見る</button>
-        <div :id="'hint-' + level" class="hint">
+        <button :id="'hint-' + unique_id + '-btn'" class="rounded p-1 bg-green-700 hover:bg-green-600" :target="'#hint-' + unique_id">ヒントを見る</button>
+        <div :id="'hint-' + unique_id" class="hint">
             <p>Hint: <slot></slot></p>
         </div>
     </div>

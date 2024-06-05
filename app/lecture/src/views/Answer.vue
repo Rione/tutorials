@@ -45,7 +45,7 @@
 <template>
     <Title>演習問題 解答・解説</Title>
 
-    <div class="container w-3/6 mx-auto mb-10 text-start">
+    <div class="container w-full sm:w-5/6 md:w-4/6 mx-auto mb-10 text-start">
         <div class="flex-col mx-auto mb-12 border rounded-lg border-green-600 p-3.5">
             <span class="text-2xl ml-2">目次</span><br>
                 <ul class="ml-5 mt-3">
@@ -61,7 +61,7 @@
         </Paragraph>
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 入力される名前を、"Your name is XXX."のように出力するプログラムを書け。</SubHeader>
-            <Hint level="1_easy"><span class="text-yellow-400">input()</span>関数を使うと、入力された文字列を取得できる。</Hint>
+            <Hint unique_id="1_easy"><span class="text-yellow-400">input()</span>関数を使うと、入力された文字列を取得できる。</Hint>
 
             <PyScript>
                 name = input()
@@ -74,7 +74,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 入力される2数(num1, num2)の平均を求めるプログラムを書け。</SubHeader>
-            <Hint level="1_med1">input()関数から返されるデータは、<span class="text-yellow-400">str</span>型であることに注意しよう。</Hint>
+            <Hint unique_id="1_med1">input()関数から返されるデータは、<span class="text-yellow-400">str</span>型であることに注意しよう。</Hint>
 
             <PyScript>
                 num1 = input()
@@ -88,7 +88,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 次のプログラムの誤りを指摘し、修正せよ。</SubHeader>
-            <Hint level="1_med2">プログラムは、括弧の内側から順に評価される。</Hint>
+            <Hint unique_id="1_med2">プログラムは、括弧の内側から順に評価される。</Hint>
 
             <PyScript>
                 a = input()         # aに任意の数を代入
@@ -104,7 +104,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 1番目の整数(num1)から2番目の整数(num2)を引いた結果を出力するプログラムを書け。ただし、算術演算子のうち使えるのは + のみとする。</SubHeader>
-            <Hint level="1_hard"><span class="text-yellow-400">ビット演算</span>について調べてみよう。</Hint>
+            <Hint unique_id="1_hard"><span class="text-yellow-400">ビット演算</span>について調べてみよう。</Hint>
 
             <PyScript>
                 num1: int = 10
@@ -124,7 +124,7 @@
         </Paragraph>
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 1以上x未満の範囲に含まれる奇数の総和を求めるプログラムを書け。</SubHeader>
-            <Hint level="2_easy1"><span class="text-yellow-400">range()</span>関数を使うと、list型(厳密にはrange型)の数列を取得できる。</Hint>
+            <Hint unique_id="2_easy1"><span class="text-yellow-400">range()</span>関数を使うと、list型(厳密にはrange型)の数列を取得できる。</Hint>
 
             <PyScript>
                 x: int = 100
@@ -144,7 +144,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 次のプログラムのエラーの原因を特定し、修正せよ。</SubHeader>
-            <Hint level="2_easy2">宣言されていない変数は呼び出せない。</Hint>
+            <Hint unique_id="2_easy2">宣言されていない変数は呼び出せない。</Hint>
 
             <PyScript>
                 sum = 0
@@ -166,7 +166,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 入力された自然数に対して、適切な序数を出力するプログラムを書け。例えば、1が入力された時に"1st"を返すこと。</SubHeader>
-            <Hint level="2_med">1の位の数に応じて条件分岐させること。ただし、例外がいくつか存在するので注意せよ。</Hint>
+            <Hint unique_id="2_med">1の位の数に応じて条件分岐させること。ただし、例外がいくつか存在するので注意せよ。</Hint>
 
             <PyScript>
                 num = int(input())
@@ -189,7 +189,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 任意の実数x(rad)に対して、sin(x)の値を出力するプログラムを書け。ただし、必要な計算精度は10桁程度とし、以下のpiの値を利用しても良いものとする。</SubHeader>
-            <Hint level="2_hard">関数の周期性を利用することで効率的なコードが書ける。</Hint>
+            <Hint unique_id="2_hard">関数の周期性を利用することで効率的なコードが書ける。</Hint>
 
             <PyScript>
                 pi: float = 3.14159265359
@@ -225,7 +225,7 @@
         </Paragraph>
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 次のデータを正規化せよ。</SubHeader>
-            <Hint level="3_easy">グレイスケール(8bit)ですね。</Hint>
+            <Hint unique_id="3_easy">グレイスケール(8bit)ですね。</Hint>
 
             <PyScript>
                 data = [
@@ -267,7 +267,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 次のデータを昇順(ascending order)に並べ替えよ。ただし、バブルソートを使うこと。</SubHeader>
-            <Hint level="3_med1">各データが泡のように浮かび上がってきます。</Hint>
+            <Hint unique_id="3_med1">各データが泡のように浮かび上がってきます。</Hint>
 
             <PyScript>
                 data = [5, 9, 3, 6, 2, 1, 4, 7, 8, 0]
@@ -291,7 +291,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 行列Aと行列Bの積を求めよ。</SubHeader>
-            <Hint level="3_med2">定義通りに計算しよう。(※手計算しないでね)</Hint>
+            <Hint unique_id="3_med2">定義通りに計算しよう。(※手計算しないでね)</Hint>
 
             <PyScript>
                 A = [
@@ -329,7 +329,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] データAとデータBの相関係数を求めよ。</SubHeader>
-            <Hint level="3_med3">平方根は、<span class="text-yellow-400">math.sqrt()</span>関数で計算できる。</Hint>
+            <Hint unique_id="3_med3">平方根は、<span class="text-yellow-400">math.sqrt()</span>関数で計算できる。</Hint>
 
             <PyScript>
                 import math

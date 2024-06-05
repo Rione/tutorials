@@ -33,7 +33,7 @@
 <template>
     <Title>第3講 Python: 配列、辞書</Title>
 
-    <div class="container w-3/6 mx-auto mb-10 text-start">
+    <div class="container w-full sm:w-5/6 md:w-4/6 mx-auto mb-10 text-start">
         <Header>1.配列</Header>
         <Paragraph>
             配列(<span class="text-yellow-400">list</span>, <span class="text-yellow-400">array</span>)とは、「複数の要素（値）の集合を格納・管理するのに用いられるデータ構造」(<a href="https://ja.wikipedia.org/wiki/%E9%85%8D%E5%88%97" class="underline text-blue-200">Wikipedia「配列」</a>より引用)のことである。
@@ -380,7 +380,7 @@
         </Paragraph>
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 次のデータを正規化せよ。</SubHeader>
-            <Hint level="easy">グレイスケール(8bit)ですね。</Hint>
+            <Hint unique_id="easy">グレイスケール(8bit)ですね。</Hint>
 
             <PyScript>
                 data = [
@@ -398,7 +398,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 次のデータを昇順(ascending order)に並べ替えよ。ただし、バブルソートを使うこと。</SubHeader>
-            <Hint level="med1">各データが泡のように浮かび上がってきます。</Hint>
+            <Hint unique_id="med1">各データが泡のように浮かび上がってきます。</Hint>
 
             <PyScript>
                 data = [5, 9, 3, 6, 2, 1, 3, 7, 8, 0]
@@ -410,7 +410,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 行列Aと行列Bの積を求めよ。</SubHeader>
-            <Hint level="med2">定義通りに計算しよう。(※手計算しないでね)</Hint>
+            <Hint unique_id="med2">定義通りに計算しよう。(※手計算しないでね)</Hint>
 
             <PyScript>
                 A = [
@@ -431,7 +431,7 @@
 
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] データAとデータBの相関係数を求めよ。</SubHeader>
-            <Hint level="med3">平方根は、<span class="text-yellow-400">math.sqrt()</span>関数で計算できる。</Hint>
+            <Hint unique_id="med3">平方根は、<span class="text-yellow-400">math.sqrt()</span>関数で計算できる。</Hint>
 
             <PyScript>
                 import math

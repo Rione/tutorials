@@ -34,7 +34,7 @@
 <template>
     <Title>第4講 Python: 関数、ライブラリ</Title>
 
-    <div class="container w-3/6 mx-auto mb-10 text-start">
+    <div class="container w-full sm:w-5/6 md:w-4/6 mx-auto mb-10 text-start">
         <Header>1.関数</Header>
         <Paragraph>
             関数(<span class="text-yellow-400">function</span>, クラス内で宣言されるものは<span class="text-yellow-400">method</span>)は、与えられた引数(<span class="text-yellow-400">argument</span>)に対して何らかの処理を実行し、戻り値(<span class="text-yellow-400">return value</span>)を返すような構文のことである。
@@ -56,19 +56,10 @@
                 関数名には、変数名と同様、原則として任意の文字列を使用することができる。
                 関数名の後ろのカッコには、その関数がとる引数を指定する。
                 また、戻り値は<span class="text-yellow-400">return</span>句の後に記述する値となる。
-                ここで、関数の定義は、関数の呼び出しよりも必ず前に記述されるということに注意してほしい。
+                ここで、関数の定義は、関数の呼び出しよりも必ず前に記述するということに注意されたい。
+                もし後ろに書いた場合は、関数が未定義となってエラーとなってしまう(ただしメソッドはこの限りでない)。
             </Paragraph>
             <Paragraph>
-                もし後ろに書いた場合は、次の例のように、関数が未定義となってエラーとなってしまう(ただしメソッドはこの限りでない)。
-
-                <PyScript>
-                    print(add(1, 2))
-
-                    def add(a, b):
-                        sum = a + b
-                        return sum
-                </PyScript>
-
                 また、関数の引数や戻り値は必ずしも必要ではない。
                 特に、関数を定義する目的が処理のサブルーチン化やラッピング(wrapping)である時には、このような関数を定義することは往々にしてあり得る。
                 以下は、これらを全く取らない関数の例である。
@@ -116,7 +107,7 @@
                 </PyScript>
 
                 上の例は、奇数を指定した個数返すプログラムである。
-                出力されたデータを見ると、list型のようなイテラブルオブジェクトであることが分かる。
+                出力されたデータを見ると、イテラブルを用いた反復処理と同様の結果が得られることが分かる。
                 このように、return句の代わりに<span class="text-yellow-400">yield</span>句を指定するだけで、イテラブルの各要素を個別に計算する処理が実装できる。
                 これを通常の関数で実装したのが以下である。
 
@@ -132,7 +123,7 @@
                 </PyScript>
 
                 上の例では出力される結果は同じだが、ジェネレータの場合には、結果を格納するための変数(配列)が定義されていないことに気づくだろう。
-                実は、ジェネレータは結果を逐次掃き出していくので、結果を格納しておく変数が不要なのである。
+                実は、ジェネレータは結果を逐次掃き出していくので、結果を格納しておく変数が不要である。
                 したがって、ジェネレータを活用することでメモリの使用量を抑えることができる。
                 これは、特にメモリの使用量が大きくなりがちな再帰関数の代替手法として有効な性質である。
             </Paragraph>
@@ -216,7 +207,7 @@
                 標準ライブラリはインストール不要だが、外部ライブラリはインターネットからのインストールが必要である。
                 ライブラリのインストールは、<span class="text-yellow-400">pip</span>などのパッケージインストーラを介して行うのが一般的である。
 
-                <Code><span class="text-green-600">pip</span> --version</Code>
+                <Code unique_id="1" language="bash" content="pip --version">$ <span class="text-green-600">pip</span> --version</Code>
 
                 上のコマンドで、使用している環境にpipがインストールされているか確認することができる。
                 もし"pip: not found"となる場合は、まずpip自体をインストールする必要がある。
@@ -227,7 +218,7 @@
                 pipがインストールされていることを確認したら、今度は外部ライブラリをインストールしてみよう。
                 以下のコマンドは、<span class="text-yellow-400">OpenCV</span>と呼ばれる、画像処理の際に用いる外部ライブラリをインストールする。
 
-                <Code><span class="text-green-600">pip</span> install opencv-python</Code>
+                <Code unique_id="2" language="bash" content="pip install opencv-python">$ <span class="text-green-600">pip</span> install opencv-python</Code>
 
                 その他、インストールしたいライブラリがある場合は、<a href="https://pypi.org/" class="underline text-blue-200">Python Package Index (PyPI)</a>で検索してみると良い。
                 インストールする際のコマンドをコピー&ペーストすることができる。
@@ -274,7 +265,145 @@
 
         <Header>3.最終問題</header>
         <Paragraph>
-            近日公開! 乞うご期待
+            問題を解くにあたって必要なライブラリは、全て、あらかじめインポートされています。
+            また、今回でPythonの講座は最終回となるので、いつもよりたくさんの問題を用意しました。
+            これまで学習した構文が網羅的に問われます。
+            ぜひ楽しんで挑戦してください。
+        </Paragraph>
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 与えられた2つの自然数の最大公約数を求めるプログラムを書け。</SubHeader>
+            <Hint unique_id="easy1">ユークリッドの互除法(Euclidean algorithm)を使うと良い。</Hint>
+
+            <PyScript>
+                num1 = 1071
+                num2 = 1029
+
+                print(gcd)
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 次の配列からstr型のデータを全て取り除け。ただし、int型に変換できる場合には取り除かずに変換せよ。</SubHeader>
+            <Hint unique_id="easy2"><span class="text-yellow-400">type()</span>、あるいは<span class="text-yellow-400">isinstance()</span>関数を使うことで、データ型を調べられる。</Hint>
+
+            <PyScript>
+                data = [3, 0, 7, 'Null', 'N/A', '6', 8, 'None', '5', '4', "2", 9, 1]
+
+                print(data)
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 与えられた英文を単語ごとに区切り、含まれる単語数をカウントするプログラムを書け。</SubHeader>
+            <Hint unique_id="easy3">str型の実態は、配列である。<span class="text-yellow-400">split()</span>関数を使おう。</Hint>
+
+            <PyScript>
+                sentence = "Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation."
+
+                print(word_count)
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] フィボナッチ数列の第1項から第n項までを出力するプログラムを書け。ただし、第1項と第2項は1とする。</SubHeader>
+            <Hint unique_id="easy4">数列が漸化式で定義される場合、再帰関数との親和性が高い場合が多い。</Hint>
+
+            <PyScript>
+                n = 10
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 与えられた小文字を大文字に、大文字を小文字にそれぞれ変換するプログラムを書け。</SubHeader>
+            <Hint unique_id="med1">"ASCII table"で検索してみよう。きっと分かるはずだ。</Hint>
+
+            <PyScript>
+                string = "wELCOME TO rI-ONE!"
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] sqrt(tan(x))の区間[0, pi/4]における定積分を求めるプログラムを書け。ただし、必要な計算精度は5桁程度とし、math.sqrt()およびmath.tan()を使用しても良いものとする。</SubHeader>
+            <Hint unique_id="med2">積分は、その定義(Riemann integral)に立ち返って考えてみること。より精度が求められる場合には、台形積分を考えると良い。(ヨビノリで見たって? 知らない子ですねえ。)</Hint>
+
+            <PyScript>
+                import math
+
+                # 続きを書いてね
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 以下の配列を、マージソートによって昇順(ascending order)に並べ替え、さらに配列の任意の要素nを探索するプログラムを書け。</SubHeader>
+            <Hint unique_id="hard1">ソートされたデータに対しては二分探索(<span class="text-yellow-400">binary search</span>)を行おう。</Hint>
+
+            <PyScript>
+                n = 9
+                data = [5, 9, 4, 6, 2, 1, 3, 7, 8, 0]
+                # 続きを書いてね
+
+                print(sorted_data)
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 6面サイコロを指定回数転がした時、上面にある数字を求めるプログラムを書け。ただし、初期状態は上面を1、正面を3、正面から見て左面を2とし、サイコロは、奥、手前、左、右の4方向に回転できるものとする。</SubHeader>
+            <Hint unique_id="hard2">classを用いてステートを管理すると実装しやすい。</Hint>
+
+            <PyScript>
+                # 自力で書いてね
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-purple-500 font-bold">INSANE</span>] 以下のTakuzuを解くプログラムを書け。ただし、-1は空欄を示している。</SubHeader>
+            <Hint unique_id="insane1">Takuzuは、Sudokuに似たパズルゲームである。まずは、インターネットでルールを調べてみると良い。</Hint>
+
+            <PyScript>
+                grid = [
+                            [ 1, -1, -1, -1, -1,  1],
+                            [ 1, -1, -1,  0,  1, -1],
+                            [-1,  1,  0, -1, -1, -1],
+                            [-1, -1,  1,  0, -1,  1],
+                            [-1, -1, -1,  1, -1, -1],
+                            [-1, -1, -1, -1,  0, -1]
+                        ]
+
+                # 続きを書いてね
+                print(filled_grid)
+            </PyScript>
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-purple-500 font-bold">INSANE</span>] 与えられたRSA公開鍵をもとに暗号文を解読せよ。ただし、デコードの際に以下のint_to_ascii()関数を使って良いものとする。</SubHeader>
+            <Hint unique_id="insane2">M ** eの値がNより僅かに大きくなるように調整されているため、多少の工夫を要する。</Hint>
+
+            <Code unique_id="3" language="RSA" content="">
+                Public key:<br>
+                N: 1615765684321463054078226051959887884233678317734892901740763321135213636796075462401950274602405095138589898087428337758445013281488966866073355710771864671726991918706558071231266976427184673800225254531695928541272546385146495736420261815693810544589811104967829354461491178200126099661909654163542661541699404839644035177445092988952614918424317082380174383819025585076206641993479326576180793544321194357018916215113009742654408597083724508169216182008449693917227497813165444372201517541788989925461711067825681947947471001390843774746442699739386923285801022685451221261010798837646928092277556198145662924691803032880040492762442561497760689933601781401617086600593482127465655390841361154025890679757514060456103104199255917164678161972735858939464790960448345988941481499050248673128656508055285037090026439683847266536283160142071643015434813473463469733112182328678706702116054036618277506997666534567846763938692335069955755244438415377933440029498378955355877502743215305768814857864433151287<br>
+                e: 3<br><br>
+
+                Cypher: 578069870094530462351261328666948515767897554502658120071907233783580395970131001941243908494353148130204366040277222739367513876346540027310848869067907765165251877924898614648219428930415010995973046665081910009013380837528607284315379785254404418467244979703868133847909433979017006731168734225226472367645374395273402314286134258138147136887254193694936530170957338675981316104803406001670063727851563932586592183827560674752708484474164406580399785727963997213948258953551891509104817116121684614878730582087330564032458592680194321481011243419888004168330070726256067503306799123195083232571209881050644598831117799547485331699050071488203534328420973557149080164022632732481301962959025169938525829991464491884077802994023313240938074001642044266215311806357886616275047721584982489250738342064045493889514303566889174037589093135573068541792703611394285169278753880997372788879561060315177893555376509936461335252720144979668267713455875089986569293335492620674584708415004907231317347924827333088
+            </Code>
+
+            <PyScript>
+                def int_to_ascii(number):
+                    hex_str = format(number, 'x')
+                    
+                    if len(hex_str) % 2 != 0:
+                        hex_str += '0'
+
+                    ascii_str = ""
+                    for i in range(0, len(hex_str), 2):
+                        hex_pair = hex_str[i:i+2]
+                        ascii_str += chr(int(hex_pair, 16))
+
+                    return ascii_str
+
+                # 続きを書いてね
+            </PyScript>
         </Paragraph>
 
         <ProgressFooter :progress="completion" class="mt-16" />
