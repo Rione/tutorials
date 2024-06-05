@@ -33,7 +33,7 @@
 <template>
     <Title>第2講 Python: if文、for文、while文</Title>
 
-    <div class="container w-3/6 mx-auto mb-10 text-start">
+    <div class="container w-full sm:w-5/6 md:w-4/6 mx-auto mb-10 text-start">
         <Header>1.if文</Header>
         <Paragraph>
             <span class="text-yellow-400">if</span>文とは、与えられた条件に応じて処理の方法や順番を変えるための構文であり、Pythonのみならず、多くのプログラミング言語で実装されている。
