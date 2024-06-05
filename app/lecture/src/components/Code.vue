@@ -38,7 +38,7 @@
     <div class="py-3">
         <div class="container bg-black-800 border border-green-600 rounded my-3 px-3 py-3">
             <p class="-mt-2 text-sm">{{ language }}</p>
-            <div id="text" class="relative px-3 py-2 rounded bg-white text-black">
+            <div id="text" class="break-all relative px-3 py-2 rounded bg-white text-black">
                 <slot></slot>
                 <button :id="'btn-' + unique_id" class="absolute end-2 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg p-2 inline-flex items-center justify-center">
                     <span :id="'default-icon-' + unique_id">
