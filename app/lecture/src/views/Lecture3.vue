@@ -33,7 +33,7 @@
 <template>
     <Title>第3講 Python: 配列、辞書</Title>
 
-    <div class="container w-3/6 mx-auto mb-10 text-start">
+    <div class="container w-full sm:w-5/6 md:w-4/6 mx-auto mb-10 text-start">
         <Header>1.配列</Header>
         <Paragraph>
             配列(<span class="text-yellow-400">list</span>, <span class="text-yellow-400">array</span>)とは、「複数の要素（値）の集合を格納・管理するのに用いられるデータ構造」(<a href="https://ja.wikipedia.org/wiki/%E9%85%8D%E5%88%97" class="underline text-blue-200">Wikipedia「配列」</a>より引用)のことである。
