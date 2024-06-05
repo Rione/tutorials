@@ -33,7 +33,7 @@
 <template>
     <Title>第1講 Python: データ型、変数、演算子</Title>
 
-    <div class="container w-3/6 mx-auto mb-10 text-start">
+    <div class="container w-full sm:w-5/6 md:w-4/6 mx-auto mb-10 text-start">
         <Header>1.データ型</Header>
         <Paragraph>
             Pythonに限らず、プログラミング言語が扱うデータには"型(<span class="text-yellow-400">type</span>)"が存在する。
