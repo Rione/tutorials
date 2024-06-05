@@ -45,7 +45,7 @@
 <template>
     <Title>演習問題 解答・解説</Title>
 
-    <div class="container w-3/6 mx-auto mb-10 text-start">
+    <div class="container w-full sm:w-5/6 md:w-4/6 mx-auto mb-10 text-start">
         <div class="flex-col mx-auto mb-12 border rounded-lg border-green-600 p-3.5">
             <span class="text-2xl ml-2">目次</span><br>
                 <ul class="ml-5 mt-3">
