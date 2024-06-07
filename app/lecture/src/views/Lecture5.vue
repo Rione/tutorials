@@ -37,58 +37,61 @@
     <div class="container w-full sm:w-5/6 md:w-4/6 mx-auto mb-10 text-start">
         <Header>1.概要</Header>
         <Paragraph>
-            <span class="text-yellow-400">Linux</span>は、Linuxカーネルの上に動作するオープンソースのOSの総称である。
-            Unixに類似した構造を有するため、同じくUnix系列のMacOSとは、直接の互換性はないものの、同様の操作感が得られる。
+            <span class="text-yellow-400">Linux</span>は、Linuxカーネル上で動作するオープンソースのOSの総称である。
+            Unixに類似した構造を有するため、同じくUnix系列のMacOSとは、直接の互換性はないものの、同様の操作性が得られる。
 
-            <SubHeader>関数の基本</SubHeader>
+            <SubHeader>ディストリビューション</SubHeader>
             <Paragraph>
-                まずは、関数の典型的な例を見てみよう。
+                上述したように、LinuxはLinuxカーネルを用いるOSの総称であって、それぞれのOSの実態はディストリビューション(<span class="text-yellow-400">distribution</span>, <span class="text-yellow-400">distro</span>)と呼ばれる。
+                distroは、カーネルと周辺部のソフトウェア(デスクトップ環境など)からなるパッケージであって、インターネットからブートイメージを入手することができる。
+                以下は、distroの一例である。
 
-                <PyScript>
-                    def add(a, b):
-                        sum = a + b
-                        return sum
+                <ul class="list-disc ml-10 my-5">
+                    <li>Ubuntu (<a href="https://ubuntu.com/" class="underline text-blue-200">https://ubuntu.com/</a>)</li>
+                    <li>Debian (<a href="https://www.debian.org/" class="underline text-blue-200">https://www.debian.org/</a>)</li>
+                    <li>Fedora (<a href="https://fedoraproject.org/" class="underline text-blue-200">https://fedoraproject.org/</a>)</li>
+                    <li>Arch Linux (<a href="https://archlinux.org/" class="underline text-blue-200">https://archlinux.org/</a>)</li>
+                    <li>openSUSE (<a href="https://www.opensuse.org/" class="underline text-blue-200">https://www.opensuse.org/</a>)</li>
+                </ul>
 
-                    print(add(1, 2))
-                </PyScript>
-
-                Pythonで関数を定義するには、<span class="text-yellow-400">def</span>句(defineの略記)を用いる。
-                関数名には、変数名と同様、原則として任意の文字列を使用することができる。
-                関数名の後ろのカッコには、その関数がとる引数を指定する。
-                また、戻り値は<span class="text-yellow-400">return</span>句の後に記述する値となる。
-                ここで、関数の定義は、関数の呼び出しよりも必ず前に記述するということに注意されたい。
-                もし後ろに書いた場合は、関数が未定義となってエラーとなってしまう(ただしメソッドはこの限りでない)。
-            </Paragraph>
-            <Paragraph>
-                また、関数の引数や戻り値は必ずしも必要ではない。
-                特に、関数を定義する目的が処理のサブルーチン化やラッピング(wrapping)である時には、このような関数を定義することは往々にしてあり得る。
-                以下は、これらを全く取らない関数の例である。
-
-                <PyScript>
-                    def say_hello():
-                        print("Hoi zäme!")
-
-                    say_hello()
-                </PyScript>
+                distroにはそれぞれの強みがあるので、使途に応じた使い分けが必要だろう。
+                例えば、多くのdistroでは初めから所定のGUI環境が提供されるが、Arch Linuxやサーバ用distroの場合、自分の好みのGUI環境を導入することができる。
             </Paragraph>
 
-            <SubHeader>再帰関数</SubHeader>
+            <SubHeader>シェル</SubHeader>
             <Paragraph>
-                再帰関数(<span class="text-yellow-400">recursive function</span>)とは、関数の処理内で自身を再帰的に呼び出すような関数のことである。計算科学の文脈では、トップダウン型のアプローチの一つである分割統治法を実現するために使用される。早速、実例を見てみよう。
+                Linuxでは、基本的な操作はターミナル(<span class="text-yellow-400">terminal</span>)から行うのが一般である。
+                そして、ターミナルに入力された命令を解釈し、カーネルに伝達するのがシェル(<span class="text-yellow-400">shell</span>)の機能である。
+                shellには以下のようなものがある。
 
-                <PyScript>
-                    def sum(num):
-                        if num == 1:
-                            return 1
-                        else:
-                            return sum(num - 1) + num
+                <ul class="list-disc ml-10 my-5">
+                    <li>sh (bourne SHell)</li>
+                    <li>bash (Bourne-Again SHell)</li>
+                    <li>zsh (Z SHell)</li>
+                    <li>fish (Friendly Interactive SHell)</li>
+                    <li>ksh (Korn SHell)</li>
+                </ul>
 
-                    sum(100)
-                </PyScript>
+                現在使われているシェルを確認したい場合は、以下のコマンドを実行すること。
 
-                上の例は、与えられた数までの自然数の総和を計算するプログラムである(第2講では、for文を使って実装した)。
-                見ての通り、sum()関数の中でsum()関数が再帰的に呼び出されている。
-                再帰関数を使うと、for文などを用いるときと比べてシンプルなコードになる傾向がある一方で、メモリ使用量が大きいことや、無限ループに陥らないように注意を払わなければならない欠点がある。
+                <Code unique_id="0" language="bash" content="echo $SHELL">$ <span class="text-green-600">echo</span> $SHELL</Code>
+
+                すると、実行されているシェルのパスが返されるので、シェルの種類を判断できる。
+                以下の例では、bashが実行されていることがわかる。
+
+                <Code unique_id="1" language="bash" content="">$ <span class="text-green-600">echo</span> $SHELL<br>/bin/bash</Code>
+            </Paragraph>
+
+            <SubHeader>アクセス権</SubHeader>
+            <Paragraph>
+                Linuxでは、それぞれのファイル(<span class="text-yellow-400">file</span>)あるいはディレクトリ(<span class="text-yellow-400">directory</span>)に固有のアクセス権(<span class="text-yellow-400">permission</span>)が設定される。
+                アクセス権は、そのファイルまたはディレクトリに対して、どのユーザがどのような操作を行えるかを規定する。現在のディレクトリに存在するコンテンツの権限を全て確認したい場合、以下のコマンドを実行すると良い。
+
+                <Code unique_id="1" language="bash" content="ls -l">$ <span class="text-green-600">ls</span> -l</Code>
+
+                すると、このような表示が返ってくるだろう。
+
+                <Code unique_id="2" language="bash" content="">$ <span class="text-green-600">ls</span> -l<br>total 12<br>-rw-r--r-- 1 user user 1234 Jun  7 10:00 file1.txt<br>-rw-r--r-- 1 user user 5678 Jun  7 10:01 file2.txt<br>drwxr-xr-x 2 user user 4096 Jun  7 10:02 dir1</Code>
             </Paragraph>
 
             <SubHeader>ジェネレータ</SubHeader>
