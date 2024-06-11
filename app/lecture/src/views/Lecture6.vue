@@ -188,10 +188,18 @@
             </Paragraph>
         </Paragraph>
 
-        <div class="container">
+        <Header>3.おわりに</Header>
+        <Paragraph>
+            全6回に渡り、ご清聴いただきありがとうございました。
+            今回の講座を受けて、プログラミングは何だか難しそうだと感じた方もいらっしゃるかもしれませんね。
+            ご安心ください。今の時代は、ChatGPTたる文明の利器があるのです。
+            迷ったら、何でもかんでもAIに尋ねれば良いのです。
+            彼らが、十中八九解決してくれるでしょう。
+            <br><br>
+            ともかく、今後も頑張って学習を続けてくださいね。
             それではみなさん、
-            <div class="rainbow-text">Happy Coding!</div>
-        </div>
+            <div class="text-center rainbow-text">Happy Coding!</div>
+        </Paragraph>
 
         <ProgressFooter :progress="completion" class="mt-16" />
         <div class="text-center my-5">
@@ -201,39 +209,18 @@
 </template>
 
 <style scoped>
-    .rainbow-text{
-        position: relative;
-        color: #000;
-        background: #fff;
-        mix-blend-mode: multiply;
-        overflow: hidden;
-        
-        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        padding: 2px 4px 6px;
-        margin: -2px -4px -6px;
+    @keyframes rainbow-move {
+        0% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
-    .rainbow-text::before{
-        content: "";
-        position: absolute;
-        top:0;right:0;bottom:0;left:-100%;
+
+    .rainbow-text {
+        font-size: 4em;
+        font-weight: bold;
         background: white repeating-linear-gradient(90deg, #14ffe9 0%, #ffc800 16.66666%, #ff00e0 33.33333%, #14ffe9 50.0%);
-        mix-blend-mode: screen;
-        pointer-events: none;
-        animation: move 1s linear infinite;
-    }
-
-    @keyframes move{
-        0%{transform: translateX(0);}
-        100%{transform: translateX(50%);}
-    }
-
-    @supports not (mix-blend-mode: multiply) {
-        .rainbow-text{
+        background-size: 200%;
+        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        background-clip: text !important;
-        background: white repeating-linear-gradient(90deg, #14ffe9, #ffc800, #ff00e0, #14ffe9);
-        text-shadow: none;
-        }
-        .rainbow-text::before{ content: none; }
+        animation: rainbow-move 2s linear infinite;
     }
 </style>
