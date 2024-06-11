@@ -65,14 +65,30 @@
             全てのGitコマンドは、"git"が第1引数となるため、他のコマンドと混同されることは少ないだろう。
             チームで同一レポジトリの開発を行う場合は、後述するpushコマンドなどが破壊的な影響をもたらす場合があるので、実行する際にはくれぐれも注意し、自分がどのような操作を行おうとしているのかを常に意識すること。
 
-            <SubHeader>git init</SubHeader>
+            <div class="flex-col mx-auto mt-10 mb-12 border rounded-lg border-green-600 p-3.5">
+                <span class="text-2xl ml-2">主なGitコマンド</span><br>
+                    <ul class="ml-5 mt-3">
+                        <li><a href="#1" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">git init</a></li>
+                        <li><a href="#2" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">git add</a></li>
+                        <li><a href="#3" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">git commit</a></li>
+                        <li><a href="#4" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">git branch</a></li>
+                        <li><a href="#5" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">git checkout</a></li>
+                        <li><a href="#6" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">git merge</a></li>
+                        <li><a href="#7" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">git clone</a></li>
+                        <li><a href="#8" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">git fetch</a></li>
+                        <li><a href="#9" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">git push</a></li>
+                        <li><a href="#10" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">git pull</a></li>
+                    </ul>
+            </div>
+
+            <SubHeader id="1">git init</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">init</span>は、initializeの略であり、バージョン管理をしたいディレクトリ内で最初だけ実行する。
 
                 <Code unique_id="0" language="bash" content="git init">$ <span class="text-green-600">git</span> init</Code>
             </Paragraph>
 
-            <SubHeader>git add</SubHeader>
+            <SubHeader id="2">git add</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">add</span>は、コミットしたい内容を選択(ステージング)したいときに用いる。
                 以下の例では、file1.txtだけをコミット対象に選択している。
@@ -87,7 +103,7 @@
                 のように、--allオプションをつける方が良い。
             </Paragraph>
 
-            <SubHeader>git commit</SubHeader>
+            <SubHeader id="3">git commit</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">commit</span>は、ローカル環境に変更を保存するときに用いる。
                 コミットの粒度(granularity)は、チームの開発方針などにもよるが、ほとんどの場合、どれだけ粗くても機能単位で行われるべきである。
@@ -102,7 +118,7 @@
                 feat, add, update, removeなど、その変更を簡潔に表す単語を先頭に含めることが多い。
             </Paragraph>
 
-            <SubHeader>git branch</SubHeader>
+            <SubHeader id="4">git branch</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">branch</span>は、ローカル上のブランチを一覧する。
 
@@ -112,7 +128,7 @@
                 また、<span class="text-yellow-400">-a</span>(all)オプションを付せば、リモート上のブランチを含めて表示できる。
             </Paragraph>
 
-            <SubHeader>git checkout</SubHeader>
+            <SubHeader id="5">git checkout</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">checkout</span>は、作業スペースをローカル上の別のブランチに変更したいときに用いる。
 
@@ -123,7 +139,7 @@
                 <Code unique_id="7" language="bash" content="git checkout -b test3">$ <span class="text-green-600">git</span> checkout -b test3<br>Switched to branch 'test3'</Code>
             </Paragraph>
 
-            <SubHeader>git merge</SubHeader>
+            <SubHeader id="6">git merge</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">merge</span>は、指定されたローカル上の2つのブランチを結合する。
                 このコマンドは、現在作業中のブランチに指定したブランチをマージするので、先にマージ先のブランチに移動しておくことが必要である。
@@ -132,7 +148,7 @@
                 <Code unique_id="8" language="bash" content="git merge test2">$ <span class="text-green-600">git</span> checkout test1<br>Switched to branch 'test1'<br>$ <span class="text-green-600">git</span> merge test2</Code>
             </Paragraph>
 
-            <SubHeader>git clone</SubHeader>
+            <SubHeader id="7">git clone</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">clone</span>は、リモート上のブランチをローカルにダウンロードするコマンドである。
                 GitHubからダウンロード用のリンクをコピーすることができる。
@@ -144,7 +160,7 @@
                 ダウンロードされたディレクトリ内では、すでにGitを使用するための初期化が完了しているので、git initする必要はない。
             </Paragraph>
 
-            <SubHeader>git fetch</SubHeader>
+            <SubHeader id="8">git fetch</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">fetch</span>は、ローカル上のリモート追跡ブランチを、リモートのブランチと同期させるために用いる。
                 ただし、ローカル上のブランチに対してマージは行わない。
@@ -156,7 +172,7 @@
                 変更をマージしたい場合には、前述のgit mergeを使えば良い。
             </Paragraph>
 
-            <SubHeader>git push</SubHeader>
+            <SubHeader id="9">git push</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">push</span>は、ローカル上にあるブランチを、リモートにあるブランチにマージするためのコマンドである。
                 リモートに直接マージをするので、場合によっては破壊的な変化になる可能性がある。
@@ -173,7 +189,7 @@
                 また、originとは、リモートレポジトリのURLのエイリアスである。
             </Paragraph>
 
-            <SubHeader>git pull</SubHeader>
+            <SubHeader id="10">git pull</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">pull</span>は、git fetchとgit mergeを組み合わせたコマンドである。
                 したがって、これら2つのコマンドを個別に実行するのと結果は全く同じである。
@@ -192,7 +208,7 @@
         <Paragraph>
             全6回に渡り、ご清聴いただきありがとうございました。
             今回の講座を受けて、プログラミングは何だか難しそうだと感じた方もいらっしゃるかもしれませんね。
-            ご安心ください。今の時代は、ChatGPTたる文明の利器があるのです。
+            ご安心ください。今の時代は、<span class="text-yellow-400">ChatGPT</span>たる文明の利器があるのです。
             迷ったら、何でもかんでもAIに尋ねれば良いのです。
             彼らが、十中八九解決してくれるでしょう。
             <br><br>
