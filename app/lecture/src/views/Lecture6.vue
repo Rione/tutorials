@@ -90,7 +90,7 @@
             <SubHeader>git commit</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">commit</span>は、ローカル環境に変更を保存するときに用いる。
-                コミットの粒度(granularity)は、プロジェクトの開発方針などにも左右されるが、ほとんどの場合、どれだけ粗くても機能単位で行われるべきである。
+                コミットの粒度(granularity)は、チームの開発方針などにもよるが、ほとんどの場合、どれだけ粗くても機能単位で行われるべきである。
                 これより粗い粒度では、コミットをやり直す場合に失われる進捗が大きすぎて、開発に無駄な時間が生じてしまう。
 
                 <Code unique_id="3" language="bash" content="git commit">$ <span class="text-green-600">git</span> commit</Code>
@@ -158,55 +158,40 @@
 
             <SubHeader>git push</SubHeader>
             <Paragraph>
-                <span class="text-yellow-400">touch</span>は、空のファイルを作成するコマンドである。
+                <span class="text-yellow-400">push</span>は、ローカル上にあるブランチを、リモートにあるブランチにマージするためのコマンドである。
+                リモートに直接マージをするので、場合によっては破壊的な変化になる可能性がある。
+                必ず、マージ先のリモートブランチをよく確認すること。
+                特に、リモートのmainあるいはmasterブランチに直接プッシュしないように気をつけること。
 
-                <Code unique_id="9" language="bash" content="touch file3.txt">$ <span class="text-green-600">ls</span><br>file1.txt file2.txt dir1<br>$ <span class="text-green-600">touch</span> file3.txt<br>$ <span class="text-green-600">ls</span><br>file1.txt file2.txt file3.txt dir1<br></Code>
+                <Code unique_id="11" language="bash" content="git push">$ <span class="text-green-600">git</span> push</Code>
 
-                Linuxでは、拡張子(extension)によってファイルの種類を判別しない。
-                したがって、自由に拡張子を付すこともできるが、ユーザビリティの観点から、なるべく慣習に従った拡張子をつけるべきである。
+                間違いを防ぐ意味で、以下のように、あえてマージ元とマージ先のブランチ名を明記することを推奨する。
+
+                <Code unique_id="12" language="bash" content="git push origin test1:test1">$ <span class="text-green-600">git</span> push origin test1:test1</Code>
+
+                &lt;ローカルブランチ&gt; : &lt;リモートブランチ&gt;の順に書く。
+                また、originとは、リモートレポジトリのURLのエイリアスである。
             </Paragraph>
 
-            <SubHeader>mkdir</SubHeader>
+            <SubHeader>git pull</SubHeader>
             <Paragraph>
-                <span class="text-yellow-400">mkdir</span>は、空のディレクトリを作成するコマンドである。
+                <span class="text-yellow-400">pull</span>は、git fetchとgit mergeを組み合わせたコマンドである。
+                したがって、これら2つのコマンドを個別に実行するのと結果は全く同じである。
 
-                <Code unique_id="10" language="bash" content="mkdir dir2">$ <span class="text-green-600">ls</span><br>file1.txt file2.txt dir1<br>$ <span class="text-green-600">mkdir</span> dir2<br>$ <span class="text-green-600">ls</span><br>file1.txt file2.txt dir1 dir2<br></Code>
-            </Paragraph>
+                <Code unique_id="13" language="bash" content="git pull">$ <span class="text-green-600">git</span> pull</Code>
+                <Code unique_id="14" language="bash" content="git fetch && git merge">$ <span class="text-green-600">git</span> fetch && <span class="text-green-600">git</span> merge</Code>
 
-            <SubHeader>cat</SubHeader>
-            <Paragraph>
-                <span class="text-yellow-400">cat</span>は、concatenateの略で、ファイルの中身を表示したり、2つのファイルの中身を結合したりする。
-                主な使途は、ファイルの中身の確認だろう。
-
-                <Code unique_id="11" language="bash" content="cat file1.txt">$ <span class="text-green-600">cat</span> file1.txt<br>This is an example.</Code>
-            </Paragraph>
-
-            <SubHeader>echo</SubHeader>
-            <Paragraph>
-                <span class="text-yellow-400">echo</span>は、指定した文字列を表示する。
-                Pythonにおけるprint()関数と似たような機能である。
-
-                <Code unique_id="12" language="bash" content="echo hello">$ <span class="text-green-600">echo</span> hello<br>hello</Code>
-
-                さらに応用的な使い方として、リダイレクトと組み合わせることにより、ファイルを上書きしたり追記したりすることができる。
-
-                <Code unique_id="13" language="bash" content="echo hello > file1.txt">$ <span class="text-green-600">echo</span> hello > file1.txt<br>$ <span class="text-green-600">cat</span> file1.txt<br>hello</Code>
-                <Code unique_id="14" language="bash" content="echo hello >> file1.txt">$ <span class="text-green-600">echo</span> hello >> file1.txt<br>$ <span class="text-green-600">cat</span> file1.txt<br>This is an example.<br>hello</Code>
-
-                ">"が上書き、">>"が追記である。
-            </Paragraph>
-
-            <SubHeader>rm</SubHeader>
-            <Paragraph>
-                <span class="text-yellow-400">rm</span>は、removeの略で、指定したファイル・ディレクトリを<span class="text-red-400">完全に消去する</span>。
-                したがって、不用意にこのコマンドを使うと、誤って意図せぬファイルやディレクトリを消去し、取り返しのつかない事態に陥る危険性がある。
-                使用の際は、細心の注意を払い、ダブルチェックを怠らないようにすること。
-
-                <Code unique_id="11" language="bash" content="rm file2.txt">$ <span class="text-green-600">ls</span><br>file1.txt file2.txt dir1<br>$ <span class="text-green-600">rm</span> file2.txt<br>$ <span class="text-green-600">ls</span><br>file1.txt dir1<br></Code>
-
-                ディレクトリを中身ごと消去したい場合は、<span class="text-yellow-400">-r</span>(recursive)オプションを付すこと。また、インターネット上には<span class="text-yellow-400">-f</span>(force)オプションを使っている例が載っているが、なるべく使わないのが無難である。
+                上の2つは、どちらも同じ結果になる。
+                ただし、チームの開発方針によって、git pullが禁止されていることもある。
+                これは、リモートでエラーが生じているときに、それを把握しないままローカルにマージしてしまうことを防ぐためである。
+                しかし、エラーが発生した状態でリモートにプッシュされる事態は通常は起こり得ないため、git pullを使っても良いとの見解もある。
             </Paragraph>
         </Paragraph>
+
+        <div class="container">
+            それではみなさん、
+            <div class="rainbow-text">Happy Coding!</div>
+        </div>
 
         <ProgressFooter :progress="completion" class="mt-16" />
         <div class="text-center my-5">
@@ -216,4 +201,39 @@
 </template>
 
 <style scoped>
+    .rainbow-text{
+        position: relative;
+        color: #000;
+        background: #fff;
+        mix-blend-mode: multiply;
+        overflow: hidden;
+        
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        padding: 2px 4px 6px;
+        margin: -2px -4px -6px;
+    }
+    .rainbow-text::before{
+        content: "";
+        position: absolute;
+        top:0;right:0;bottom:0;left:-100%;
+        background: white repeating-linear-gradient(90deg, #14ffe9 0%, #ffc800 16.66666%, #ff00e0 33.33333%, #14ffe9 50.0%);
+        mix-blend-mode: screen;
+        pointer-events: none;
+        animation: move 1s linear infinite;
+    }
+
+    @keyframes move{
+        0%{transform: translateX(0);}
+        100%{transform: translateX(50%);}
+    }
+
+    @supports not (mix-blend-mode: multiply) {
+        .rainbow-text{
+        -webkit-text-fill-color: transparent;
+        background-clip: text !important;
+        background: white repeating-linear-gradient(90deg, #14ffe9, #ffc800, #ff00e0, #14ffe9);
+        text-shadow: none;
+        }
+        .rainbow-text::before{ content: none; }
+    }
 </style>
