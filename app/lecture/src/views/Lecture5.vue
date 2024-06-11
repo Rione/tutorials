@@ -105,7 +105,23 @@
             Linuxを操作する上で必要不可欠と言っても過言でないコマンドばかりを取り扱っているため、ぜひ覚えてほしい。
             また、コマンドを覚える際はただ暗記するのではなく、実際にターミナルに入力して、その機能と合わせて覚えるように心がけよう。
 
-            <SubHeader>ls</SubHeader>
+            <div class="flex-col mx-auto mt-10 mb-12 border rounded-lg border-green-600 p-3.5">
+                <span class="text-2xl ml-2">主なLinuxコマンド</span><br>
+                    <ul class="ml-5 mt-3">
+                        <li><a href="#1" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">ls</a></li>
+                        <li><a href="#2" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">pwd</a></li>
+                        <li><a href="#3" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">cd</a></li>
+                        <li><a href="#4" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">mv</a></li>
+                        <li><a href="#5" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">cp</a></li>
+                        <li><a href="#6" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">touch</a></li>
+                        <li><a href="#7" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">mkdir</a></li>
+                        <li><a href="#8" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">cat</a></li>
+                        <li><a href="#9" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">echo</a></li>
+                        <li><a href="#10" class="hover:underline hover:text-2xl hover:text-green-600 decoration-green-600">rm</a></li>
+                    </ul>
+            </div>
+
+            <SubHeader id="1">ls</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">ls</span>は、listの略であり、ディレクトリの中身を一覧するときに用いる。
 
@@ -118,14 +134,14 @@
                 上の例でも見たように、<span class="text-yellow-400">-l</span>オプションで権限を確認することもできる。
             </Paragraph>
 
-            <SubHeader>pwd</SubHeader>
+            <SubHeader id="2">pwd</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">pwd</span>は、print working directoryの略であり、現在作業中のディレクトリの絶対パスを返す。
 
                 <Code unique_id="5" language="bash" content="pwd">$ <span class="text-green-600">pwd</span><br>/home/test</Code>
             </Paragraph>
 
-            <SubHeader>cd</SubHeader>
+            <SubHeader id="3">cd</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">cd</span>は、change directoryの略であり、作業ディレクトリを指定したパスへと変更する。
 
@@ -134,14 +150,14 @@
                 存在しないパスを指定した場合は、"cd: The directory 'hogehoge' does not exist"のように表示され、標準エラー出力となる。
             </Paragraph>
 
-            <SubHeader>mv</SubHeader>
+            <SubHeader id="4">mv</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">mv</span>は、moveの略であり、指定したファイル・ディレクトリを任意のパスへ移動させる。
 
                 <Code unique_id="7" language="bash" content="mv file1.txt dir1">$ <span class="text-green-600">ls</span><br>file1.txt file2.txt dir1<br>$ <span class="text-green-600">mv</span> file1.txt dir1<br>$ <span class="text-green-600">ls</span> dir1<br>file1.txt</Code>
             </Paragraph>
 
-            <SubHeader>cp</SubHeader>
+            <SubHeader id="5">cp</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">cp</span>は、copyの略であり、指定したファイル・ディレクトリを任意のパスへコピーする。
                 書き方は、mvコマンドと非常に似ている。
@@ -151,7 +167,7 @@
                 ディレクトリをその中身ごとコピーするときは、<span class="text-yellow-400">-r</span>(recursive)オプションを付して、再帰的にコピーする必要がある。
             </Paragraph>
 
-            <SubHeader>touch</SubHeader>
+            <SubHeader id="6">touch</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">touch</span>は、空のファイルを作成するコマンドである。
 
@@ -161,14 +177,14 @@
                 したがって、自由に拡張子を付すこともできるが、ユーザビリティの観点から、なるべく慣習に従った拡張子をつけるべきである。
             </Paragraph>
 
-            <SubHeader>mkdir</SubHeader>
+            <SubHeader id="7">mkdir</SubHeader>
             <Paragraph>
-                <span class="text-yellow-400">mkdir</span>は、空のディレクトリを作成するコマンドである。
+                <span class="text-yellow-400">mkdir</span>は、make directoryの略で、空のディレクトリを作成するコマンドである。
 
                 <Code unique_id="10" language="bash" content="mkdir dir2">$ <span class="text-green-600">ls</span><br>file1.txt file2.txt dir1<br>$ <span class="text-green-600">mkdir</span> dir2<br>$ <span class="text-green-600">ls</span><br>file1.txt file2.txt dir1 dir2<br></Code>
             </Paragraph>
 
-            <SubHeader>cat</SubHeader>
+            <SubHeader id="8">cat</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">cat</span>は、concatenateの略で、ファイルの中身を表示したり、2つのファイルの中身を結合したりする。
                 主な使途は、ファイルの中身の確認だろう。
@@ -176,7 +192,7 @@
                 <Code unique_id="11" language="bash" content="cat file1.txt">$ <span class="text-green-600">cat</span> file1.txt<br>This is an example.</Code>
             </Paragraph>
 
-            <SubHeader>echo</SubHeader>
+            <SubHeader id="9">echo</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">echo</span>は、指定した文字列を表示する。
                 Pythonにおけるprint()関数と似たような機能である。
@@ -191,15 +207,28 @@
                 ">"が上書き、">>"が追記である。
             </Paragraph>
 
-            <SubHeader>rm</SubHeader>
+            <SubHeader id="10">rm</SubHeader>
             <Paragraph>
                 <span class="text-yellow-400">rm</span>は、removeの略で、指定したファイル・ディレクトリを<span class="text-red-400">完全に消去する</span>。
                 したがって、不用意にこのコマンドを使うと、誤って意図せぬファイルやディレクトリを消去し、取り返しのつかない事態に陥る危険性がある。
                 使用の際は、細心の注意を払い、ダブルチェックを怠らないようにすること。
 
-                <Code unique_id="11" language="bash" content="rm file2.txt">$ <span class="text-green-600">ls</span><br>file1.txt file2.txt dir1<br>$ <span class="text-green-600">rm</span> file2.txt<br>$ <span class="text-green-600">ls</span><br>file1.txt dir1<br></Code>
+                <Code unique_id="15" language="bash" content="rm file2.txt">$ <span class="text-green-600">ls</span><br>file1.txt file2.txt dir1<br>$ <span class="text-green-600">rm</span> file2.txt<br>$ <span class="text-green-600">ls</span><br>file1.txt dir1<br></Code>
 
                 ディレクトリを中身ごと消去したい場合は、<span class="text-yellow-400">-r</span>(recursive)オプションを付すこと。また、インターネット上には<span class="text-yellow-400">-f</span>(force)オプションを使っている例が載っているが、なるべく使わないのが無難である。
+            </Paragraph>
+
+            <SubHeader>おまけ</SubHeader>
+            <Paragraph>
+                lsコマンドはディレクトリ内の要素の一覧を返すが、しばしば、表示される要素数が多すぎて目的の要素を探すのが困難な時がある。
+                そのような場合は、lsコマンドの結果を<span class="text-yellow-400">grep</span>コマンドに渡せば良い。
+                grepはglobal regular expression printの略で、指定した正規表現を含む文字列を表示する。
+                例を見て確認しよう。
+
+                <Code unique_id="16" language="bash" content="ls | grep 5">$ <span class="text-green-600">ls</span><br>file1.txt file2.txt file3.txt file4.txt file5.txt<br> dir1&nbsp;&nbsp;dir2&nbsp;&nbsp;dir3&nbsp;&nbsp;dir4&nbsp;&nbsp;dir5<br>$ <span class="text-green-600">ls</span> | <span class="text-green-600">grep</span> 5<br>file5.txt dir5</Code>
+
+                このように、与えられた文字列を含む要素だけを抽出することができる。
+                ここで用いた"|"はパイプ(pipe)と呼ばれ、前のコマンドの出力を次のコマンドの入力にリダイレクトするための記号である。
             </Paragraph>
         </Paragraph>
 
