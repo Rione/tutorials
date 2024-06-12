@@ -63,7 +63,7 @@
         <Paragraph>
             ここでは、主なGitコマンドを紹介する。
             全てのGitコマンドは、"git"が第1引数となるため、他のコマンドと混同されることは少ないだろう。
-            チームで同一レポジトリの開発を行う場合は、後述するpushコマンドなどが破壊的な影響をもたらす場合があるので、実行する際にはくれぐれも注意し、自分がどのような操作を行おうとしているのかを常に意識すること。
+            チームで開発を行う場合、後述するpushコマンドなどは破壊的な影響をもたらす場合があるので、実行の際にはくれぐれも注意し、自分がどのような操作を行おうとしているのかを常に意識すること。
 
             <div class="flex-col mx-auto mt-10 mb-12 border rounded-lg border-green-600 p-3.5">
                 <span class="text-2xl ml-2">主なGitコマンド</span><br>
@@ -99,13 +99,13 @@
                 <Code unique_id="2" language="bash" content="git add .">$ <span class="text-green-600">git</span> add .</Code>
                 が紹介されることがあるが、これは、文字通りプロジェクト下の全てのファイル・ディレクトリを追加するため、どのファイルにどのような変更が加えられたかを追跡しづらくなる。
                 もし新しく作成されたファイル・ディレクトリのみを全て追加したい場合には、
-                <Code unique_id="2" language="bash" content="git add --all">$ <span class="text-green-600">git</span> add --all</Code>
+                <Code unique_id="15" language="bash" content="git add --all">$ <span class="text-green-600">git</span> add --all</Code>
                 のように、--allオプションをつける方が良い。
             </Paragraph>
 
             <SubHeader id="3">git commit</SubHeader>
             <Paragraph>
-                <span class="text-yellow-400">commit</span>は、ローカル環境に変更を保存するときに用いる。
+                <span class="text-yellow-400">commit</span>は、ローカル環境の変更を保存するときに用いる。
                 コミットの粒度(granularity)は、チームの開発方針などにもよるが、ほとんどの場合、どれだけ粗くても機能単位で行われるべきである。
                 これより粗い粒度では、コミットをやり直す場合に失われる進捗が大きすぎて、開発に無駄な時間が生じてしまう。
 
@@ -115,7 +115,7 @@
 
                 <Code unique_id="4" language="bash" content="git commit -m 'add: new file'">$ <span class="text-green-600">git</span> commit -m 'add: new file'</Code>
 
-                feat, add, update, removeなど、その変更を簡潔に表す単語を先頭に含めることが多い。
+                feat, add, update, removeなど、その変更の趣旨を簡潔に表す単語を先頭に含めることが多い。
             </Paragraph>
 
             <SubHeader id="4">git branch</SubHeader>
@@ -132,7 +132,7 @@
             <Paragraph>
                 <span class="text-yellow-400">checkout</span>は、作業スペースをローカル上の別のブランチに変更したいときに用いる。
 
-                <Code unique_id="6" language="bash" content="git checkout test1">$ <span class="text-green-600">git</span> branch<br>* main<br>test1<br>test2<br>$ <span class="text-green-600">git</span> checkout test1<br>Switched to branch 'test1'<br>$ <span class="text-green-600">git</span> branch<br>* test1<br>main<br>test2</Code>
+                <Code unique_id="6" language="bash" content="git checkout test1">$ <span class="text-green-600">git</span> branch<br>* main<br>test1<br>test2<br>$ <span class="text-green-600">git</span> checkout test1<br>Switched to branch 'test1'<br>$ <span class="text-green-600">git</span> branch<br>main<br>* test1<br>test2</Code>
 
                 また、<span class="text-yellow-400">-b</span>(branch)オプションを付すことで、新しくブランチを作成することも可能である。
 
@@ -150,14 +150,13 @@
 
             <SubHeader id="7">git clone</SubHeader>
             <Paragraph>
-                <span class="text-yellow-400">clone</span>は、リモート上のブランチをローカルにダウンロードするコマンドである。
+                <span class="text-yellow-400">clone</span>は、リモート上のレポジトリをローカルに複製するコマンドである。
                 GitHubからダウンロード用のリンクをコピーすることができる。
-                また、ダウンロードの際に用いる通信方式をHTTPSかSSHから選択することができる。
-                ただし、GitHub公式はHTTPS接続を推奨しているようである。
+                ダウンロードの際に用いる通信方式をHTTPSかSSHから選択することができるが、GitHub公式はHTTPS接続を推奨しているようである。
 
                 <Code unique_id="9" language="bash" content="git clone https://github.com/Rione/home_ros2_setup.git">$ <span class="text-green-600">git</span> clone https://github.com/Rione/home_ros2_setup.git<br>$ <span class="text-green-600">ls</span><br>home_ros2_setup</Code>
 
-                ダウンロードされたディレクトリ内では、すでにGitを使用するための初期化が完了しているので、git initする必要はない。
+                複製されたレポジトリ内では、すでにGitを使用するための初期化が完了しているので、git initする必要はない。
             </Paragraph>
 
             <SubHeader id="8">git fetch</SubHeader>
