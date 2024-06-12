@@ -367,7 +367,7 @@
 
         <Header id="4">第4講 Python: 関数、ライブラリ</Header>
         <Paragraph>
-            <div class="-my-3 underline text-blue-500 hover:text-blue-300" @click="navigate(4)">第4講 Python: 関数、ライブラリ</div>
+            <div class="-my-3 underline text-blue-500 hover:text-blue-300" @click="navigate(4)">第4講 Python: 関数、ライブラリのページへ</div>
         </Paragraph>
         <Paragraph>
             <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 与えられた2つの自然数の最大公約数を求めるプログラムを書け。</SubHeader>
@@ -414,7 +414,7 @@
                 print(data)
             </PyScript>
 
-            要素を削除すると、その分indexがずれていくということが難点である。
+            要素を削除すると、その分indexがずれていくというのが難点である。
             上では、indexにoffsetを付してこの現象を回避しているが、新たな配列を用意し、そこに要素を移していくことでも同様の動作が実現できる。
         </Paragraph>
 
