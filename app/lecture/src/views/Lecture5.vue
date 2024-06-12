@@ -36,11 +36,11 @@
         <Header>1.概要</Header>
         <Paragraph>
             <span class="text-yellow-400">Linux</span>は、Linuxカーネル上で動作するオープンソースのOSの総称である。
-            Unixに類似した構造を有するため、同じくUnix系列のMacOSとは、直接の互換性はないものの、同様の操作性が得られる。
+            Unixに類似した構造を有するため、同じくUnix系列のMacOSとは、直接の互換性はないものの、同様の操作性を得られる。
 
             <SubHeader>ディストリビューション</SubHeader>
             <Paragraph>
-                上述したように、LinuxはLinuxカーネルを用いるOSの総称であって、それぞれのOSの実態はディストリビューション(<span class="text-yellow-400">distribution</span>, <span class="text-yellow-400">distro</span>)と呼ばれる。
+                上述したように、LinuxはLinuxカーネルを用いるOSの総称であって、それぞれのOSの実体はディストリビューション(<span class="text-yellow-400">distribution</span>, <span class="text-yellow-400">distro</span>)と呼ばれる。
                 distroは、カーネルと周辺部のソフトウェア(デスクトップ環境など)からなるパッケージであって、インターネットからブートイメージを入手することができる。
                 以下は、distroの一例である。
 
@@ -59,7 +59,7 @@
             <SubHeader>シェル</SubHeader>
             <Paragraph>
                 Linuxでは、基本的な操作はターミナル(<span class="text-yellow-400">terminal</span>)から行うのが一般である。
-                そして、ターミナルに入力された命令を解釈し、カーネルに伝達するのがシェル(<span class="text-yellow-400">shell</span>)の機能である。
+                そして、ターミナルに入力された命令を解釈し、カーネルに伝達するのがシェル(<span class="text-yellow-400">shell</span>)の役割である。
                 shellには以下のようなものがある。
 
                 <ul class="list-disc ml-10 my-5">
@@ -83,11 +83,11 @@
             <SubHeader>アクセス権</SubHeader>
             <Paragraph>
                 Linuxでは、それぞれのファイル(<span class="text-yellow-400">file</span>)あるいはディレクトリ(<span class="text-yellow-400">directory</span>)に固有のアクセス権(<span class="text-yellow-400">permission</span>)が設定される。
-                アクセス権は、そのファイルまたはディレクトリに対して、どのユーザがどのような操作を行えるかを規定する。現在のディレクトリに存在するコンテンツの権限を全て確認したい場合、以下のコマンドを実行すると良い。
+                アクセス権は、そのファイルまたはディレクトリに対して、どのユーザがどのような操作を行えるかを規定する。現在のディレクトリに存在する全てのコンテンツの権限を確認したい場合、以下のコマンドを実行すると良い。
 
-                <Code unique_id="1" language="bash" content="ls -l">$ <span class="text-green-600">ls</span> -l</Code>
+                <Code unique_id="17" language="bash" content="ls -l">$ <span class="text-green-600">ls</span> -l</Code>
 
-                すると、このような表示が返ってくるだろう。
+                すると、このような結果が返ってくるだろう。
 
                 <Code unique_id="2" language="bash" content="">$ <span class="text-green-600">ls</span> -l<br>total 12<br>-rw-r--r-- 1 user user 1234 Jun  7 10:00 file1.txt<br>-rw-r--r-- 1 user user 5678 Jun  7 10:01 file2.txt<br>drwxr-xr-x 2 user user 4096 Jun  7 10:02 dir1</Code>
 
@@ -174,7 +174,7 @@
                 <Code unique_id="9" language="bash" content="touch file3.txt">$ <span class="text-green-600">ls</span><br>file1.txt file2.txt dir1<br>$ <span class="text-green-600">touch</span> file3.txt<br>$ <span class="text-green-600">ls</span><br>file1.txt file2.txt file3.txt dir1<br></Code>
 
                 Linuxでは、拡張子(extension)によってファイルの種類を判別しない。
-                したがって、自由に拡張子を付すこともできるが、ユーザビリティの観点から、なるべく慣習に従った拡張子をつけるべきである。
+                したがって、自由に拡張子を付すこともできるが、メンテナンス性の観点から、なるべく慣習に従った拡張子をつけるべきである。
             </Paragraph>
 
             <SubHeader id="7">mkdir</SubHeader>
