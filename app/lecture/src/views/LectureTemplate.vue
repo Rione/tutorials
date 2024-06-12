@@ -3,6 +3,8 @@
     import Lecture2 from './Lecture2.vue';
     import Lecture3 from './Lecture3.vue';
     import Lecture4 from './Lecture4.vue';
+    import Lecture5 from './Lecture5.vue';
+    import Lecture6 from './Lecture6.vue';
     import Answer from './Answer.vue';
     import WorkInProgress from './WorkInProgress.vue'
     import NotExisting from './NotExisting.vue';
@@ -13,8 +15,9 @@
     <Lecture2 v-else-if="$route.params.number === '2'"/>
     <Lecture3 v-else-if="$route.params.number === '3'"/>
     <Lecture4 v-else-if="$route.params.number === '4'"/>
-    <WorkInProgress v-else-if="$route.params.number === '5'" />
-    <WorkInProgress v-else-if="$route.params.number === '6'" />
+    <Lecture5 v-else-if="$route.params.number === '5'"/>
+    <Lecture6 v-else-if="$route.params.number === '6'"/>
+    <!-- <WorkInProgress v-else-if="$route.params.number === '6'" /> -->
     <Answer v-else-if="$route.params.number === '7'" />
     <NotExisting v-else />
 </template>

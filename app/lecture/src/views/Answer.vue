@@ -367,10 +367,457 @@
 
         <Header id="4">第4講 Python: 関数、ライブラリ</Header>
         <Paragraph>
-            <div class="-my-3 underline text-blue-500 hover:text-blue-300" @click="navigate(4)">第4講 Python: 関数、ライブラリ</div>
+            <div class="-my-3 underline text-blue-500 hover:text-blue-300" @click="navigate(4)">第4講 Python: 関数、ライブラリのページへ</div>
         </Paragraph>
         <Paragraph>
-            まだできてないよ。
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 与えられた2つの自然数の最大公約数を求めるプログラムを書け。</SubHeader>
+            <Hint unique_id="4_easy1">ユークリッドの互除法(Euclidean algorithm)を使うと良い。</Hint>
+
+            <PyScript>
+                num1 = 1071
+                num2 = 1029
+
+                # ユークリッドの互除法
+                while num2 != 0:
+                    num1, num2 = num2, num1 % num2
+                    # 以下のように書いても良い
+                    # tmp = num2
+                    # num2 = num1 % num2
+                    # num1 = tmp 
+
+                print(f"GCD: {num1}")
+            </PyScript>
+
+            ユークリッドの互除法を実行すれば良い。
+            あまりが0になった時、num1がnum2で割り切れたことになるので、割る数のnum2が最大公約数となる。
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 次の配列からstr型のデータを全て取り除け。ただし、int型に変換できる場合には取り除かずに変換せよ。</SubHeader>
+            <Hint unique_id="4_easy2"><span class="text-yellow-400">type()</span>、あるいは<span class="text-yellow-400">isinstance()</span>関数を使うことで、データ型を調べられる。</Hint>
+
+            <PyScript>
+                data = [3, 0, 7, 'Null', 'N/A', '6', 8, 'None', '5', '4', "2", 9, 1]
+
+                # 削除された要素分のindexを前倒しする
+                offset = 0
+                for i in range(len(data)):
+                    # 文字列型の判定
+                    if type(data[i - offset]) is str:
+                        # 数値の判定
+                        if data[i - offset].isdigit():
+                            data[i - offset] = int(data[i - offset])
+                        else:
+                            del data[i - offset]
+                            offset += 1
+
+                print(data)
+            </PyScript>
+
+            要素を削除すると、その分indexがずれていくというのが難点である。
+            上では、indexにoffsetを付してこの現象を回避しているが、新たな配列を用意し、そこに要素を移していくことでも同様の動作が実現できる。
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] 与えられた英文を単語ごとに区切り、含まれる単語数をカウントするプログラムを書け。</SubHeader>
+            <Hint unique_id="4_easy3">str型の実態は、配列である。<span class="text-yellow-400">split()</span>関数を使おう。</Hint>
+
+            <PyScript>
+                sentence = "Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation."
+
+                words = sentence.split(" ")
+                word_count = len(words)
+
+                print(words)
+                print(word_count)
+            </PyScript>
+
+            str型のメンバ関数であるsplit()関数を使えば良い。
+            ここでは、空白(" ")ごとに区切るようにしている。
+            あとは、得られた配列の要素数をlen()関数で数え上げること。
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-green-600 font-bold">Easy</span>] フィボナッチ数列の第1項から第n項までを出力するプログラムを書け。ただし、第1項と第2項は1とする。</SubHeader>
+            <Hint unique_id="4_easy4">数列が漸化式で定義される場合、再帰関数との親和性が高い場合が多い。</Hint>
+
+            <PyScript>
+                n = 10
+
+                # ジェネレータ関数
+                def fibonacci(num):
+                    a, b = 0, 1
+                    for _ in range(num):
+                        a, b = b, a + b
+                        yield a
+
+                fib_series = []
+                for i in fibonacci(n):
+                    fib_series.append(i)
+
+                print(fib_series)
+            </PyScript>
+
+            配列内の隣り合う整数同士を加え、それを新たにその配列の末尾に付け加えるという操作をすれば良い。
+            ここでは、ステート(aとbの値)を保持するためにジェネレータを利用し、わざわざ配列の隣り合う整数を参照しなくても良いようにしているが、漸化式のように、再帰呼び出しを利用する方法もある。
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] 与えられた小文字を大文字に、大文字を小文字にそれぞれ変換するプログラムを書け。</SubHeader>
+            <Hint unique_id="4_med1">"ASCII table"で検索してみよう。きっと分かるはずだ。</Hint>
+
+            <PyScript>
+                string = "wELCOME TO rI-ONE!"
+
+                new_string = ""
+                for c in string:
+                    # 大文字の場合
+                    if(65 <= ord(c) <= 90):
+                        new_string += chr(ord(c) + 32)
+                    # 小文字の場合
+                    elif(97 <= ord(c) <= 122):
+                        new_string += chr(ord(c) - 32)
+                    # それ以外(記号)の場合
+                    else:
+                        new_string += c
+
+                print(new_string)
+            </PyScript>
+
+            それぞれの文字には、ASCIIコードという一意の数値が割り当てられているため、その値を比較することで文字列の操作を行うことができる。
+            ASCIIコードは、ord()関数によって得ることができる。
+            一つの文字の大文字と小文字の間には32の値の差があるため、それを加減すれば良い。
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-yellow-400 font-bold">Medium</span>] sqrt(tan(x))の区間[0, pi/4]における定積分を求めるプログラムを書け。ただし、必要な計算精度は5桁程度とし、math.sqrt()およびmath.tan()を使用しても良いものとする。</SubHeader>
+            <Hint unique_id="4_med2">積分は、その定義(Riemann integral)に立ち返って考えてみること。より精度が求められる場合には、台形積分を考えると良い。(ヨビノリで見たって? 知らない子ですねえ。)</Hint>
+
+            <PyScript>
+                import math
+
+                # 分割数からxの変化量を計算
+                n_split = 100000
+                dk = (math.pi / 4 - 0) / n_split
+
+                # 関数
+                def f(x):
+                    return math.sqrt(math.tan(x))
+
+                # 台形公式
+                sum = 0.0
+                for i in range(n_split):
+                    sum += f(dk * i) + f(dk * (i + 1))
+                sum *= dk / 2
+
+                print(sum)
+            </PyScript>
+
+            リーマンによる積分の定義に則り、与えられた領域を細長い短冊状の長方形で分割することを考える。
+            この短冊の数を無限大に近づける、つまり、短冊の幅を0に近づければ求める面積に収束することから、n_splitの値を大きくすればするほど、精度が向上する。
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 以下の配列を、マージソートによって昇順(ascending order)に並べ替え、さらに配列の任意の要素nを探索するプログラムを書け。</SubHeader>
+            <Hint unique_id="4_hard1">ソートされたデータに対しては二分探索(<span class="text-yellow-400">binary search</span>)を行おう。</Hint>
+
+            <PyScript>
+                n = 9
+                data = [5, 9, 4, 6, 2, 1, 3, 7, 8, 0]
+
+                # 与えられた配列を限界まで二分してソートする関数
+                def merge_sort(array):
+                    if(len(array) == 1):
+                        return array
+
+                    left = array[:(len(array) // 2)]
+                    right = array[(len(array) // 2):]
+
+                    # 再帰呼び出し
+                    left = merge_sort(left)
+                    right = merge_sort(right)
+
+                    return merge(left, right)
+
+                # 大小比較を行い、新たに一つの配列を返す関数
+                def merge(left, right):
+                    result = []
+                    index_l, index_r = 0, 0
+                    
+                    # 大小比較
+                    while (index_l < len(left)) and (index_r < len(right)):
+                        if(left[index_l] <= right[index_r]):
+                            result.append(left[index_l])
+                            index_l += 1
+                        else:
+                            result.append(right[index_r])
+                            index_r += 1
+
+                    # 余った要素をマージ
+                    if(index_l == len(left)):
+                        result += right[index_r:]
+                    elif(index_r == len(right)):
+                        result += left[index_l:]
+                            
+                    return result
+
+                # 二分探索(binary search)する関数
+                def search(array, target):
+                    min, max = 0, len(array) - 1
+
+                    while min <= max:
+                        mid = (min + max) // 2
+                        if(array[mid] == target):
+                            return mid
+                        elif(array[mid] > target):
+                            max = mid - 1
+                        else:
+                            min = mid + 1
+
+                    return -1
+
+                sorted_data = merge_sort(data)
+                print(sorted_data)
+                index = search(sorted_data, n)
+                print(index)
+            </PyScript>
+
+            マージソートは、2つの配列を並び替えて結合するという操作を再帰的に実行するアルゴリズムである。
+            したがって、上のmerge_sort()関数内では、merge()関数や自身が頻繁に呼び出されていることに気付くだろう。
+            二分探索は、データが並び替えられているときに有効な手法である。
+            大幅にステップ数を削減できるので、場合によっては、ソートをしてから探索する方が全体の計算量が減ることもある。
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-red-500 font-bold">Hard</span>] 6面サイコロを指定回数転がした時、上面にある数字を求めるプログラムを書け。ただし、初期状態は上面を1、正面を3、正面から見て左面を2とし、サイコロは、奥、手前、左、右の4方向に回転できるものとする。</SubHeader>
+            <Hint unique_id="4_hard2">classを用いてステートを管理すると実装しやすい。</Hint>
+
+            <PyScript>
+                # サイコロのクラス
+                class Dice:
+                    def __init__(self):
+                        self.state = {
+                            "top": 1,
+                            "bottom": 6,
+                            "front": 3,
+                            "back": 4,
+                            "left": 2,
+                            "right": 5
+                        }
+
+                    # 要素を羅列する関数
+                    def show_state(self):
+                        for k, v in self.state.items():
+                            print(f"{k}: {v}") 
+
+                    # 前面に回転する関数
+                    def rot_front(self):
+                        self.state["top"], self.state["front"], self.state["bottom"], self.state["back"] = \
+                        self.state["back"], self.state["top"], self.state["front"], self.state["bottom"]
+                        
+                    # 背面に回転する関数
+                    def rot_back(self):
+                        self.state["top"], self.state["front"], self.state["bottom"], self.state["back"] = \
+                        self.state["front"], self.state["bottom"], self.state["back"], self.state["top"]
+                        
+                    # 左面に回転する関数
+                    def rot_left(self):
+                        self.state["top"], self.state["left"], self.state["bottom"], self.state["right"] = \
+                        self.state["left"], self.state["bottom"], self.state["right"], self.state["top"]
+                    
+                    # 右面に回転する関数
+                    def rot_right(self):
+                        self.state["top"], self.state["left"], self.state["bottom"], self.state["right"] = \
+                        self.state["right"], self.state["top"], self.state["left"], self.state["bottom"]
+
+                # サイコロをインスタンス化
+                dice = Dice()
+
+                # サイコロの回転
+                dice.rot_front()
+                dice.rot_left()
+
+                # 結果を表示
+                dice.show_state()
+            </PyScript>
+
+            この問題の場合、サイコロには面というステートと回転というメソッドが割り当てられることになる。
+            このように、物体の状態や関数をまとめて管理する場合には、クラスを利用すると良い。
+            クラスでは、インスタンスごとに個別のステートを持たせることができる。
+            これは、<span class="text-yellow-400">オブジェクト指向</span>(Object-Oriented Programming, OOP)に通じる概念である。
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-purple-500 font-bold">INSANE</span>] 以下のTakuzuを解くプログラムを書け。ただし、-1は空欄を示している。</SubHeader>
+            <Hint unique_id="4_insane1">Takuzuは、Sudokuに似たパズルゲームである。まずは、インターネットでルールを調べてみると良い。</Hint>
+
+            <PyScript>
+                grid = [
+                            [ 1, -1, -1, -1, -1,  1],
+                            [ 1, -1, -1,  0,  1, -1],
+                            [-1,  1,  0, -1, -1, -1],
+                            [-1, -1,  1,  0, -1,  1],
+                            [-1, -1, -1,  1, -1, -1],
+                            [-1, -1, -1, -1,  0, -1]
+                        ]
+
+
+                # 与えられたグリッドがルールを満たすか判定する関数
+                def validate(grid, row, col, num):
+                    N = len(grid)
+                    
+                    # 同じ数字が3つ以上連続する場合
+                    if ((1 < col and grid[row][col-2] == grid[row][col-1] == grid[row][col]) \
+                        or (0 < col < N-1 and grid[row][col-1] == grid[row][col] == grid[row][col+1]) \
+                        or (col < N-2 and grid[row][col] == grid[row][col+1] == grid[row][col+2])):
+                            return False
+                    elif ((1 < row and grid[row-2][col] == grid[row-1][col] == grid[row][col]) \
+                        or (0 < row < N-1 and grid[row-1][col] == grid[row][col] == grid[row+1][col]) \
+                        or (row < N-2 and grid[row][col] == grid[row+1][col] == grid[row+2][col])):
+                            return False
+
+                    # 同じ行・列に含まれる0と1の数が異なる場合
+                    if ((grid[row].count(num) > N // 2) \
+                        or ([grid[i][col] for i in range(N)].count(num) > N // 2)):
+                            return False
+
+                    # 同じ行・列が2つ以上存在する場合
+                    for i in range(N):
+                        if ((i != row and grid[i] == grid[row]) \
+                            or (i != col and [grid[j][i] for j in range(N)] == [grid[j][col] for j in range(N)])):
+                                return False
+
+                    return True
+
+                # バックトラッキングを実行する関数
+                def solve_takuzu(grid):
+                    N = len(grid)
+
+                    def solve():
+                        # 全ての空欄(-1)について反復
+                        for row in range(N):
+                            for col in range(N):
+                                if grid[row][col] == -1:
+                                    for value in [0, 1]:
+                                        grid[row][col] = value
+                                        if validate(grid, row, col, value):
+                                            # もし満たしていれば、同じプロセスを再帰的に続ける
+                                            if solve():
+                                                return True
+                                        # 満たしていなければ、別の数字(1)を試す
+                                        grid[row][col] = -1
+                                    return False
+                        return True
+
+                    if solve():
+                        return grid
+                    else:
+                        return None
+
+                filled_grid = solve_takuzu(grid)
+                if filled_grid:
+                    for i in filled_grid:
+                        print(i)
+                else:
+                    print("The takuzu is unsolvable.")
+            </PyScript>
+
+            パズルを解くためのアルゴリズムの一つである、バックトラッキング(backtracking)を利用した方法を上に示した。
+            バックトラッキングは、総当たり法の一種であるが、ある状態が条件を満たさないと分かった時点で、その状態から派生する全ての可能性を排除して調べていくという点で、より効率的な方法である。
+            途中で再帰呼び出しが行われていることに注目しよう。
+        </Paragraph>
+
+        <Paragraph>
+            <SubHeader class="mb-3">[<span class="text-purple-500 font-bold">INSANE</span>] 与えられたRSA公開鍵をもとに暗号文を解読せよ。ただし、デコードの際に以下のint_to_ascii()関数を使って良いものとする。</SubHeader>
+            <Hint unique_id="4_insane2">M ** eの値がNより僅かに大きくなるように調整されているため、多少の工夫を要する。</Hint>
+
+            <Code unique_id="3" language="RSA" content="">
+                Public key:<br>
+                N: 1615765684321463054078226051959887884233678317734892901740763321135213636796075462401950274602405095138589898087428337758445013281488966866073355710771864671726991918706558071231266976427184673800225254531695928541272546385146495736420261815693810544589811104967829354461491178200126099661909654163542661541699404839644035177445092988952614918424317082380174383819025585076206641993479326576180793544321194357018916215113009742654408597083724508169216182008449693917227497813165444372201517541788989925461711067825681947947471001390843774746442699739386923285801022685451221261010798837646928092277556198145662924691803032880040492762442561497760689933601781401617086600593482127465655390841361154025890679757514060456103104199255917164678161972735858939464790960448345988941481499050248673128656508055285037090026439683847266536283160142071643015434813473463469733112182328678706702116054036618277506997666534567846763938692335069955755244438415377933440029498378955355877502743215305768814857864433151287<br>
+                e: 3<br><br>
+
+                Cypher: 578069870094530462351261328666948515767897554502658120071907233783580395970131001941243908494353148130204366040277222739367513876346540027310848869067907765165251877924898614648219428930415010995973046665081910009013380837528607284315379785254404418467244979703868133847909433979017006731168734225226472367645374395273402314286134258138147136887254193694936530170957338675981316104803406001670063727851563932586592183827560674752708484474164406580399785727963997213948258953551891509104817116121684614878730582087330564032458592680194321481011243419888004168330070726256067503306799123195083232571209881050644598831117799547485331699050071488203534328420973557149080164022632732481301962959025169938525829991464491884077802994023313240938074001642044266215311806357886616275047721584982489250738342064045493889514303566889174037589093135573068541792703611394285169278753880997372788879561060315177893555376509936461335252720144979668267713455875089986569293335492620674584708415004907231317347924827333088
+            </Code>
+
+            暗号化に使ったコード(答えではありません):
+            <PyScript>
+                def ascii_to_int(ascii_str):
+                    hex_str = ""
+                    for char in ascii_str:
+                        # ASCIIコードを16進数に変換
+                        hex_str += format(ord(char), 'x')
+
+                    return int(hex_str, 16)
+
+                plaintext = '%^38#%#@3u09uehf9}0uG&63#$_920{@$Congratulations!k0&$KR)%^ER{WE}@{RT}{@$!$HW2hgwJ{W}G|":{45FEJPgw&*wh{|#$"w9yG09}{%hiog$%#{g04GW[ephq[h0y24u'
+
+                # Public key
+                N = 1615765684321463054078226051959887884233678317734892901740763321135213636796075462401950274602405095138589898087428337758445013281488966866073355710771864671726991918706558071231266976427184673800225254531695928541272546385146495736420261815693810544589811104967829354461491178200126099661909654163542661541699404839644035177445092988952614918424317082380174383819025585076206641993479326576180793544321194357018916215113009742654408597083724508169216182008449693917227497813165444372201517541788989925461711067825681947947471001390843774746442699739386923285801022685451221261010798837646928092277556198145662924691803032880040492762442561497760689933601781401617086600593482127465655390841361154025890679757514060456103104199255917164678161972735858939464790960448345988941481499050248673128656508055285037090026439683847266536283160142071643015434813473463469733112182328678706702116054036618277506997666534567846763938692335069955755244438415377933440029498378955355877502743215305768814857864433151287
+                e = 3
+
+                # 4bitずらして桁数調整
+                M = ascii_to_int(plaintext) >> 4
+
+                # Cypher
+                C = (M ** e) % N
+
+                print(f"Public key:\nN: {N}\ne: {e}\n\nCypher: {C}")
+            </PyScript>
+
+            復号化に使ったコード(答えです):
+            <PyScript>
+                def int_to_ascii(number):
+                    hex_str = format(number, 'x')
+                    
+                    # 桁数が奇数の時、末尾に0を追加してパディング
+                    if len(hex_str) % 2 != 0:
+                        hex_str += '0'
+
+                    # 2桁ずつ取得し、対応する文字を連結
+                    ascii_str = ""
+                    for i in range(0, len(hex_str), 2):
+                        hex_pair = hex_str[i:i+2]
+                        ascii_str += chr(int(hex_pair, 16))
+
+                    return ascii_str
+                
+                # xのn乗根を二分探索する関数
+                def find_invpow(x,n):
+                    high = 1
+                    while high ** n < x:
+                        high *= 2
+                    low = high // 2
+                    # はさみうちにして探索
+                    while low < high:
+                        mid = (low + high) // 2
+                        if low < mid and mid**n < x:
+                            low = mid
+                        elif high > mid and mid**n > x:
+                            high = mid
+                        else:
+                            return mid
+                    return mid + 1
+
+                # public key
+                N = 1615765684321463054078226051959887884233678317734892901740763321135213636796075462401950274602405095138589898087428337758445013281488966866073355710771864671726991918706558071231266976427184673800225254531695928541272546385146495736420261815693810544589811104967829354461491178200126099661909654163542661541699404839644035177445092988952614918424317082380174383819025585076206641993479326576180793544321194357018916215113009742654408597083724508169216182008449693917227497813165444372201517541788989925461711067825681947947471001390843774746442699739386923285801022685451221261010798837646928092277556198145662924691803032880040492762442561497760689933601781401617086600593482127465655390841361154025890679757514060456103104199255917164678161972735858939464790960448345988941481499050248673128656508055285037090026439683847266536283160142071643015434813473463469733112182328678706702116054036618277506997666534567846763938692335069955755244438415377933440029498378955355877502743215305768814857864433151287
+                e = 3
+
+                # Cypher
+                C = 578069870094530462351261328666948515767897554502658120071907233783580395970131001941243908494353148130204366040277222739367513876346540027310848869067907765165251877924898614648219428930415010995973046665081910009013380837528607284315379785254404418467244979703868133847909433979017006731168734225226472367645374395273402314286134258138147136887254193694936530170957338675981316104803406001670063727851563932586592183827560674752708484474164406580399785727963997213948258953551891509104817116121684614878730582087330564032458592680194321481011243419888004168330070726256067503306799123195083232571209881050644598831117799547485331699050071488203534328420973557149080164022632732481301962959025169938525829991464491884077802994023313240938074001642044266215311806357886616275047721584982489250738342064045493889514303566889174037589093135573068541792703611394285169278753880997372788879561060315177893555376509936461335252720144979668267713455875089986569293335492620674584708415004907231317347924827333088
+
+                # Nを法とした剰余から、元の数を求める
+                for k in range(10):
+                    M = find_invpow(C + k * N, e)
+                    print(f"{k}: {int_to_ascii(M)}\n")
+            </PyScript>
+
+            今回は、公開鍵のうち、e(exponent)が極端に小さい例を取り上げた。
+            一般にRSA暗号方式は安全だと考えられているが、このような誤用によって、その安全性が大きく損なわれてしまう場合がある。
+            この問題のポイントは、いかに巨大な数のn乗根を求めるかということにある。
+            通常の手法では、桁数が大きすぎてオーバフローを起こすか、正常に動作するものの計算に膨大な時間がかかってしまう。
+            そこで、以前の問題でも扱った二分探索を使い、あらかじめ探索範囲を大幅に削減しておくという工夫が必要となる。
+            あとは、デコードした文字列から、文字化けなく正常に変換されているものを探せば良い。<br>
+            Congratulations!
         </Paragraph>
 
         <ProgressFooter :progress="completion" class="mt-16" />
