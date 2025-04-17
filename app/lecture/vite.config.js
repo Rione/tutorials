@@ -14,5 +14,8 @@ export default defineConfig({
                 },
             },
         }),
-    ]
+    ],
+    server: {
+        allowedHosts: ['tutorials.rione.org']
+    }
 })
