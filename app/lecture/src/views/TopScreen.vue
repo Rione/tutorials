@@ -92,7 +92,7 @@
         <!-- <div class="mt-2">※レスポンシブ非対応なのは内緒です。だって面倒くさ(ry</div> -->
         <div id="scroll-container" class="mx-auto w-4/6 mt-2">
             <div id="scroll-text" class="text-md">
-                企画・開発：reina3（<a href="https://rione.org" target="_blank" style="color: yellow; text-decoration: none;">Ri-one</a>） ホスティング：<a href="https://rione.org" target="_blank" style="color: yellow; text-decoration: none;">Ri-one</a>（tutorials.rione.org）
+                企画・開発：reina314（<a href="https://rione.org" target="_blank" style="color: yellow; text-decoration: none;">Ri-one</a>） ホスティング：<a href="https://rione.org" target="_blank" style="color: yellow; text-decoration: none;">Ri-one</a>（tutorials.rione.org）
             </div>
         </div>
     </div>
