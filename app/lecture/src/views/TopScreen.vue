@@ -91,7 +91,7 @@
         <h1 v-html="output" id="output" class="text-5xl"></h1><span class="typing-cursor"></span>
         <!-- <div class="mt-2">※レスポンシブ非対応なのは内緒です。だって面倒くさ(ry</div> -->
         <div id="scroll-container" class="mx-auto w-4/6 mt-2">
-            <div id="scroll-text" class="text-md">ついにレスポンシブ対応しました! ところで、誰がこのページをスマホで開くのでしょうか...</div>
+            <div id="scroll-text" class="text-md">企画・開発：reina3（Ri-one） ホスティング：Ri-one（tutorials.rione.org）</div>
         </div>
     </div>
 
