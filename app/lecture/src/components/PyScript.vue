@@ -8,3 +8,11 @@
         </div>
     </div>
 </template>
+
+<style scoped>
+
+py-repl {
+    white-space: pre-wrap; 
+    word-wrap: break-word; 
+}
+</style>
