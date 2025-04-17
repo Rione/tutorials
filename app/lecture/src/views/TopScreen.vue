@@ -23,9 +23,9 @@
         })
     }
 
-    const html_text = "PJ連合の<span id='target'>新入生歓迎講座</span>へようこそ。"
-    const conv_text = "PJ連合の新入生歓迎講座へようこそ。";
-    const orig_text = "PJれんごうのしんにゅうせいかんげいこうざへようこそ。";
+    const html_text = "PJ連合の<span id='target'>新入生歓迎講座</span>へようこそ！"
+    const conv_text = "PJ連合の新入生歓迎講座へようこそ！";
+    const orig_text = "PJれんごうのしんにゅうせいかんげいこうざへようこそ！";
     const speed     = 130; // Typing speed in milliseconds
     var index       = 0;
 
@@ -91,7 +91,9 @@
         <h1 v-html="output" id="output" class="text-5xl"></h1><span class="typing-cursor"></span>
         <!-- <div class="mt-2">※レスポンシブ非対応なのは内緒です。だって面倒くさ(ry</div> -->
         <div id="scroll-container" class="mx-auto w-4/6 mt-2">
-            <div id="scroll-text" class="text-md">企画・開発：reina3（Ri-one） ホスティング：Ri-one（tutorials.rione.org）</div>
+            <div id="scroll-text" class="text-md">
+                企画・開発：reina3（<a href="https://rione.org" target="_blank" style="color: yellow; text-decoration: none;">Ri-one</a>） ホスティング：<a href="https://rione.org" target="_blank" style="color: yellow; text-decoration: none;">Ri-one</a>（tutorials.rione.org）
+            </div>
         </div>
     </div>
 
@@ -120,12 +122,13 @@
         overflow: hidden;
         white-space: nowrap;
         box-sizing: border-box;
+        text-align: center; /* 子要素を中央揃え */
     }
 
     #scroll-text {
-        display: inline-block;
-        padding-right: 10%; /* Ensures the text starts off-screen */
-        position: relative;
+        display: inline-block; /* 中央揃えのためにインラインブロックに設定 */
+        position: static; /* スクロールを無効化 */
+        text-align: center;
     }
 
     .typing-cursor {
