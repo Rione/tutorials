@@ -23,9 +23,9 @@
         })
     }
 
-    const html_text = "PJ連合の<span id='target'>新入生歓迎講座</span>へようこそ！"
-    const conv_text = "PJ連合の新入生歓迎講座へようこそ！";
-    const orig_text = "PJれんごうのしんにゅうせいかんげいこうざへようこそ！";
+    const html_text = "Ri-oneの<span id='target'>新入生歓迎講座</span>へようこそ！"
+    const conv_text = "Ri-oneの新入生歓迎講座へようこそ！";
+    const orig_text = "Ri-oneれんごうのしんにゅうせいかんげいこうざへようこそ！";
     const speed     = 130; // Typing speed in milliseconds
     var index       = 0;
 
